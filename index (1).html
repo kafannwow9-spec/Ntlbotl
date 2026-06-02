@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.google.com https://*.googleapis.com https://*.gstatic.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://*.google.com https://*.googleapis.com https://*.gstatic.com; style-src 'self' 'unsafe-inline' https://*.google.com https://*.googleapis.com; img-src 'self' data: *; connect-src 'self' https://dasbord.122007aboudiii.workers.dev https://discord.com https://*.google.com https://*.googleapis.com; frame-src 'self' https://*.google.com;">
+  <title>FLX TICKET</title>
+  <meta property="og:title" content="FlixerX Dashboard" />
+  <meta property="og:description" content="افضل بوت عربي لي ادارة السيرفر و تذاكر" />
+  <meta property="og:image" itemprop="image" content="https://i.imgur.com/ekI1JYY.png" />
+  <meta property="og:image:secure_url" content="https://i.imgur.com/ekI1JYY.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="FlixerX" />
+  <meta property="og:url" content="https://amoluff.github.io/flixerx-dashboard/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FlixerX Dashboard" />
+  <meta name="twitter:description" content="افضل بوت عربي لي ادارة السيرفر و تذاكر" />
+  <meta name="twitter:image" content="https://i.imgur.com/ekI1JYY.png" />
+  <meta name="theme-color" content="#d946ef">
+  <script>
+    // حماية متقدمة ومشددة لمنع F12، الفحص، والنقر الأيمن
+    (function() {
+      // منع النقر الأيمن والتحديد والسحب
+      document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
+      document.addEventListener('dragstart', function(e) { e.preventDefault(); return false; });
+      document.addEventListener('selectstart', function(e) { e.preventDefault(); return false; });
+      
+      // منع اختصارات لوحة المفاتيح
+      document.addEventListener('keydown', function(e) {
+        if (e.keyCode === 123) { e.preventDefault(); return false; } // F12
+        if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) { e.preventDefault(); return false; } // Ctrl+Shift+I/J/C
+        if (e.ctrlKey && e.keyCode === 85) { e.preventDefault(); return false; } // Ctrl+U
+      });
+
+      // فخ أدوات المطورين بطريقة آمنة لا تتعارض مع CSP
+      const devtoolsTrap = function() {
+        const start = new Date().getTime();
+        debugger;
+        const end = new Date().getTime();
+        if (end - start > 100) {
+          // إذا تم تأخير الصفحة بسبب فتح المطورين
+          document.body.innerText = 'Access Denied / غير مصرح';
+          document.body.style.display = 'flex';
+          document.body.style.justifyContent = 'center';
+          document.body.style.alignItems = 'center';
+          document.body.style.height = '100vh';
+          document.body.style.background = '#000';
+          document.body.style.color = '#fff';
+          window.location.replace("about:blank");
+        }
+      };
+      // استدعاء الفخ بشكل مستمر (تم تقليل التردد لتخفيف الضغط)
+      setInterval(devtoolsTrap, 4000);
+    })();
+  </script>
+  <script>
+    const originalWarn = console.warn;
+    console.warn = (...args) => {
+      if (typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com should not be used in production')) return;
+      originalWarn(...args);
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            theme: {
+              base: 'var(--bg-base)',
+              panel: 'var(--bg-panel)',
+              input: 'var(--bg-input)',
+              primary: 'var(--primary)',
+              hover: 'var(--primary-hover)',
+              text: 'var(--text-main)',
+              muted: 'var(--text-muted)',
+              border: 'var(--border-color)',
+            }
+          },
+          keyframes: {
+            slideIn: {
+              '0%': { transform: 'translateY(-20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+            toastProgress: {
+              '0%': { width: '100%' },
+              '100%': { width: '0%' }
+            },
+            shimmer: {
+              '100%': { transform: 'translateX(100%)' }
+            }
+          },
+          animation: {
+            'slide-in': 'slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'toast-progress': 'toastProgress 2.2s linear forwards',
+            'shimmer': 'shimmer 1.5s infinite'
+          }
+        }
+      }
+    }
+  </script>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'ar', includedLanguages: 'ar,en,fr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <style type="text/tailwindcss">
+    @layer base {
+      :root {
+        --bg-base: #0d0b14;
+        --bg-panel: #14111d;
+        --bg-input: #1c1829;
+        --primary: #d946ef;
+        --primary-hover: #c026d3;
+        --text-main: #f3f4f6;
+        --text-muted: #9ca3af;
+        --border-color: #2d2845;
+      }
+      :root[data-theme="black"] {
+        --bg-base: #050505;
+        --bg-panel: #121212;
+        --bg-input: #1a1a1a;
+        --primary: #3b82f6; 
+        --primary-hover: #2563eb;
+        --text-main: #ffffff;
+        --text-muted: #a1a1aa;
+        --border-color: #27272a;
+      }
+      :root[data-theme="pink"] {
+        --bg-base: #280a16;
+        --bg-panel: #3d0c20;
+        --bg-input: #50132c;
+        --primary: #ec4899;
+        --primary-hover: #db2777;
+        --text-main: #fdf2f8;
+        --text-muted: #f472b6;
+        --border-color: #831843;
+      }
+      :root[data-theme="discord"] {
+        --bg-base: #313338;
+        --bg-panel: #2b2d31;
+        --bg-input: #1e1f22;
+        --primary: #5865F2;
+        --primary-hover: #4752C4;
+        --text-main: #F2F3F5;
+        --text-muted: #B5BAC1;
+        --border-color: #1E1F22;
+      }
+      :root[data-theme="white"] {
+        --bg-base: #f9fafb;
+        --bg-panel: #ffffff;
+        --bg-input: #f3f4f6;
+        --primary: #8b5cf6;
+        --primary-hover: #7c3aed;
+        --text-main: #111827;
+        --text-muted: #4b5563;
+        --border-color: #e5e7eb;
+      }
+      :root[data-theme="gold"] {
+        --bg-base: #1c1305;
+        --bg-panel: #2e1e07;
+        --bg-input: #42290b;
+        --primary: #eab308;
+        --primary-hover: #ca8a04;
+        --text-main: #fefce8;
+        --text-muted: #fde047;
+        --border-color: #713f12;
+      }
+    }
+  </style>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-base); color: var(--text-main); transition: background-color 0.3s, color 0.3s; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+    
+    .hidden { display: none !important; }
+    
+    /* Neon Pointer (Your Custom Image Replacement) */
+    .neon-cursor {
+      position: relative;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      animation: floatCursor 3.5s ease-in-out infinite;
+      z-index: 10;
+    }
+    .neon-cursor::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, var(--primary), transparent 70%);
+      filter: blur(8px);
+      z-index: -1;
+      opacity: 0.4;
+      border-radius: 50%;
+      animation: pulseGlow 3s ease-in-out infinite alternate;
+    }
+    @keyframes pulseGlow {
+      0% { opacity: 0.2; filter: blur(6px); transform: translate(-50%, -50%) scale(0.9); }
+      100% { opacity: 0.5; filter: blur(10px); transform: translate(-50%, -50%) scale(1.1); }
+    }
+    .neon-cursor svg {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: 2;
+    }
+    @keyframes floatCursor {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-12px) scale(1.05); }
+    }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    @keyframes shineRTL {
+      0% { left: 125%; }
+      40% { left: -125%; }
+      100% { left: -125%; }
+    }
+    .btn-shine-effect {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-shine-effect::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 125%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
+      transform: skewX(-20deg);
+      animation: shineRTL 3s ease-in-out infinite;
+    }
+    
+    /* Hide Google Translate completely without breaking it */
+    body { top: 0px !important; position: static !important; }
+    .goog-te-banner-frame.skiptranslate, 
+    .goog-te-banner-frame, 
+    iframe.goog-te-banner-frame,
+    iframe.skiptranslate,
+    #goog-gt-tt, 
+    #goog-gt-tt * {
+      display: none !important; 
+      opacity: 0 !important;
+      visibility: hidden !important;
+    }
+    .VIpgJd-Zvi9od-ORHb-OEVmcd, 
+    .VIpgJd-Zvi9od-aZ2wEe-wOHMyf, 
+    .VIpgJd-Zvi9od-vH1Gmc-OEVmcd { 
+      display: none !important; 
+      opacity: 0 !important;
+      visibility: hidden !important;
+    }
+    #google_translate_element { 
+      position: absolute; 
+      top: -1000px; 
+      left: -1000px; 
+      opacity: 0; 
+      pointer-events: none; 
+      z-index: -1;
+    }
+    .goog-tooltip {
+      display: none !important;
+    }
+    .goog-tooltip:hover {
+      display: none !important;
+    }
+    .goog-text-highlight {
+      background-color: transparent !important;
+      border: none !important; 
+      box-shadow: none !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center">
+  <div style="width:0; height:0; overflow:hidden; position:absolute; top:-9999px; left:-9999px; visibility:hidden; opacity:0;" aria-hidden="true"><div id="google_translate_element"></div></div>
+
+        <div id="toastContainer" class="fixed top-6 right-6 z-[100] flex flex-col gap-3 pointer-events-none items-end w-auto overflow-visible"></div>
+
+  <nav class="w-full bg-theme-panel/80 border-b border-theme-border backdrop-blur-md sticky top-0 z-50 transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-4 cursor-pointer hover:opacity-80 transition-opacity" onclick="showView('Guilds')">
+        <div class="neon-cursor w-10 h-10">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 3 L6 19 L10 14.5 L17 14.5 Z" fill="black" stroke="var(--primary)" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M6 0 L6.5 2.5 L9 3 L6.5 3.5 L6 6 L5.5 3.5 L3 3 L5.5 2.5 Z" fill="white" stroke="none" filter="drop-shadow(0 0 4px var(--primary)) drop-shadow(0 0 2px white)"/>
+          </svg>
+        </div>
+        <span class="font-extrabold text-2xl tracking-wide text-theme-primary drop-shadow-[0_0_8px_rgba(192,38,211,0.8)]" style="letter-spacing: 2px;">FLX<span class="text-theme-text font-black ml-1">TICKET</span></span>
+      </div>
+      
+      <div id="userProfile" class="hidden flex items-center gap-3">
+        <a href="https://discord.gg/AutpSQVNYE" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-2 bg-theme-input/50 border border-theme-primary/30 text-theme-primary hover:bg-theme-primary hover:text-white px-4 py-2 rounded-xl text-sm font-bold transition-all shadow-sm">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555-2.4189-2.1569-2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
+          الدعم الفني
+        </a>
+        <div class="relative group">
+          <button class="flex items-center justify-center p-2.5 rounded-xl bg-theme-base border border-theme-border hover:border-theme-primary transition-all hover:bg-theme-input shadow-sm hover:shadow-md" title="الإعدادات الشخصية">
+            <svg class="w-6 h-6 text-theme-muted group-hover:text-theme-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          </button>
+          <div class="absolute left-0 mt-2 w-52 bg-theme-panel border border-theme-border rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left scale-95 group-hover:scale-100 flex flex-col overflow-hidden z-50">
+            <div class="px-4 py-2 text-xs font-bold text-theme-muted uppercase tracking-wider bg-theme-base border-b border-theme-border flex items-center">
+              <span>اللغة والمظهر</span>
+            </div>
+            
+            <div class="relative group/lang">
+               <button class="w-full px-4 py-3 text-right text-sm hover:bg-theme-input transition-colors flex items-center justify-between">
+                 <span class="font-bold flex items-center gap-2">
+                   <svg class="w-4 h-4 group-hover/lang:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                   اللغة
+                 </span>
+                 <svg class="w-4 h-4 transform group-hover/lang:-rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+               </button>
+               <div class="max-h-0 overflow-hidden group-hover/lang:max-h-36 opacity-0 group-hover/lang:opacity-100 transition-all duration-300 ease-in-out flex flex-col bg-theme-base">
+                 <button onclick="changeLang('ar')" class="px-6 py-2.5 text-right text-sm hover:bg-theme-input font-bold transition-all flex items-center justify-between group/btn">عربي <span class="text-lg transform group-hover/btn:scale-110 group-hover/btn:-translate-x-1 transition-transform inline-block">🇸🇦</span></button>
+                 <button onclick="changeLang('fr')" class="px-6 py-2.5 text-right text-sm hover:bg-theme-input font-bold transition-all flex items-center justify-between group/btn">فرنسي <span class="text-lg transform group-hover/btn:scale-110 group-hover/btn:-translate-x-1 transition-transform inline-block">🇫🇷</span></button>
+                 <button onclick="changeLang('en')" class="px-6 py-2.5 text-right text-sm hover:bg-theme-input font-bold transition-all flex items-center justify-between group/btn">انجليزي <span class="text-lg transform group-hover/btn:scale-110 group-hover/btn:-translate-x-1 transition-transform inline-block">🇺🇸</span></button>
+               </div>
+            </div>
+            
+            <div class="border-t border-theme-border"></div>
+            <button onclick="setTheme('purple')" class="px-4 py-2.5 text-right text-sm hover:bg-theme-input text-gray-200 transition-colors flex items-center gap-3"><div class="w-4 h-4 rounded-full bg-[#0d0b14] border-2 border-[#c026d3]"></div> بنفسجي</button>
+            <button onclick="setTheme('black')" class="px-4 py-2.5 text-right text-sm hover:bg-theme-input text-gray-200 transition-colors flex items-center gap-3"><div class="w-4 h-4 rounded-full bg-black border-2 border-[#3b82f6]"></div> أسود</button>
+            <button onclick="setTheme('discord')" class="px-4 py-2.5 text-right text-sm hover:bg-theme-input text-gray-200 transition-colors flex items-center gap-3"><div class="w-4 h-4 rounded-full bg-[#313338] border-2 border-[#5865F2]"></div> ديسكورد</button>
+            <button onclick="setTheme('pink')" class="px-4 py-2.5 text-right text-sm hover:bg-theme-input text-gray-200 transition-colors flex items-center gap-3"><div class="w-4 h-4 rounded-full bg-[#3d0c20] border-2 border-[#ec4899]"></div> وردي</button>
+            <button onclick="setTheme('gold')" class="px-4 py-2.5 text-right text-sm hover:bg-theme-input text-gray-200 transition-colors flex items-center gap-3"><div class="w-4 h-4 rounded-full bg-[#1c1305] border-2 border-[#eab308]"></div> ذهبي</button>
+            <button onclick="setTheme('white')" class="px-4 py-2.5 text-right text-sm hover:bg-theme-input text-gray-800 transition-colors flex items-center gap-3"><div class="w-4 h-4 rounded-full bg-white border-2 border-[#8b5cf6] shadow-inner"></div> أبيض</button>
+          </div>
+        </div>
+        <div class="relative">
+          <div onclick="toggleProfileDropdown(event)" class="flex items-center gap-2 bg-theme-base py-1 px-2 pr-1 rounded-full border border-theme-border shadow-sm cursor-pointer hover:border-theme-primary/50 transition-colors">
+            <img id="userAvatar" class="w-9 h-9 rounded-full border-2 border-theme-primary/40 p-0.5 transition-colors hidden" alt="User Avatar" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
+            <span id="userName" class="text-sm font-bold pl-3 pr-2 text-theme-text transition-colors hidden sm:block"></span>
+          </div>
+          <div id="profileDropdownMenu" class="absolute left-0 mt-2 w-48 bg-theme-panel border border-theme-border rounded-xl shadow-2xl opacity-0 invisible transition-all duration-200 transform origin-top-left scale-95 flex flex-col overflow-hidden z-50">
+            <button onclick="logout()" class="px-4 py-3 font-bold text-right text-sm text-red-500 hover:bg-red-500/10 transition-colors flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg> تسجيل الخروج</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-1 w-full max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 flex flex-col items-center">
+    <!-- 1. Login View -->
+    <div id="viewLogin" class="flex-1 flex flex-col items-center justify-center text-center max-w-3xl mx-auto transition-opacity duration-300 w-full mt-10">
+      <div class="neon-cursor w-28 h-28 mb-10">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 3 L6 19 L10 14.5 L17 14.5 Z" fill="black" stroke="var(--primary)" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M6 0 L6.5 2.5 L9 3 L6.5 3.5 L6 6 L5.5 3.5 L3 3 L5.5 2.5 Z" fill="white" stroke="none" filter="drop-shadow(0 0 6px var(--primary)) drop-shadow(0 0 3px white)"/>
+        </svg>
+      </div>
+      <div class="mb-5 flex flex-col items-center gap-2 opacity-0 animate-slide-in" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
+        <span class="text-xs font-bold text-theme-primary bg-theme-primary/10 px-3 py-1 rounded-full border border-theme-primary/20">FLX Support</span>
+        <div class="inline-flex items-center gap-2.5 bg-theme-panel/70 border border-theme-border/50 px-5 py-2 rounded-full backdrop-blur-md shadow-lg">
+          <span class="relative flex h-3.5 w-3.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500"></span>
+          </span>
+          <span class="text-sm font-bold text-theme-muted">يثق بنا أكثر من</span>
+          <span id="serverCountAnim" class="font-black text-2xl text-theme-primary drop-shadow-[0_0_8px_rgba(192,38,211,0.6)] tracking-wider">0</span>
+          <span class="text-sm font-bold text-theme-text uppercase tracking-wider">سيرفر</span>
+        </div>
+      </div>
+      <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tighter mb-6 leading-tight">اهلا بك في <span class="text-theme-primary drop-shadow-lg inline-block">FLX TICKET</span></h1>
+      <p class="text-theme-muted mb-16 text-xl sm:text-2xl leading-relaxed max-w-2xl">المنصة الأذكى والأسهل لإدارة تذاكر السيرفر وتخصيص الخيارات بلمسة واحدة.</p>
+      <button onclick="login()" class="inline-flex items-center justify-center px-12 py-5 font-black text-white text-xl rounded-2xl bg-gradient-to-r from-theme-primary to-theme-hover shadow-[0_4px_40px_rgba(192,38,211,0.5)] hover:shadow-[0_8px_60px_rgba(192,38,211,0.8)] hover:-translate-y-2 transition-all duration-300 border-2 border-white/10 active:scale-95">
+        تسجيل الدخول بـ Discord
+      </button>
+
+      <div class="mt-10 flex flex-col items-center animate-slide-in opacity-90 hover:opacity-100 transition-opacity" style="animation-delay: 0.3s; animation-fill-mode: backwards;">
+        <a href="https://top.gg/bot/1356316450616508657/vote" target="_blank" rel="noopener noreferrer" class="relative hover:scale-[1.02] transition-transform duration-300 flex items-center gap-4 bg-theme-panel border border-theme-border p-5 rounded-2xl shadow-lg group overflow-hidden">
+          <div class="w-12 h-12 rounded-xl bg-theme-primary/20 flex items-center justify-center text-theme-primary group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="text-right flex-1">
+            <div class="font-black text-theme-text text-xl group-hover:text-theme-primary transition-colors">صوّت للبوت على Top.gg</div>
+            <div class="text-sm font-bold text-theme-muted mt-1">اضغط هنا لدعم البوت وزيادة السيرفرات</div>
+          </div>
+        </a>
+        <span class="text-theme-muted text-sm mt-3 font-bold bg-theme-base/50 px-3 py-1 rounded-full border border-theme-border/50 backdrop-blur-sm">مربوط بشكل آمن عبر Top.gg ✔️</span>
+      </div>
+    </div>
+
+    <!-- 2. Guilds View -->
+    <div id="viewGuilds" class="hidden flex-1 w-full transition-opacity duration-300">
+      <div class="flex items-center justify-between mb-10 bg-theme-panel p-6 sm:p-8 rounded-3xl border border-theme-border shadow-md">
+        <div>
+          <h2 class="text-3xl font-black text-theme-text mb-2">سيرفراتك</h2>
+          <p class="text-theme-muted font-medium text-lg">ابدأ بتخصيص أنظمة التذاكر لسيرفراتك فوراً.</p>
+        </div>
+        <button id="refreshBtn" onclick="fetchGuilds()" class="p-4 rounded-xl bg-theme-base text-theme-primary hover:bg-theme-input transition-all duration-300 border border-theme-border hover:border-theme-primary shadow-sm active:scale-95 group" title="تحديث السيرفرات">
+          <svg class="w-7 h-7 transform transition-transform duration-500 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+        </button>
+      </div>
+      
+      <div id="guildsLoading" class="hidden flex flex-col items-center justify-center py-20 gap-8">
+        <div class="neon-cursor w-20 h-20">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 3 L6 19 L10 14.5 L17 14.5 Z" fill="black" stroke="var(--primary)" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M6 0 L6.5 2.5 L9 3 L6.5 3.5 L6 6 L5.5 3.5 L3 3 L5.5 2.5 Z" fill="white" stroke="none" filter="drop-shadow(0 0 4px var(--primary)) drop-shadow(0 0 2px white)"/>
+          </svg>
+        </div>
+        <div class="text-2xl font-black text-theme-primary tracking-wide">جاري جلب السيرفرات...</div>
+      </div>
+      
+      <div id="guildsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full"></div>
+      <div id="guildsEmpty" class="hidden flex-col justify-center items-center text-center py-24 text-theme-muted border-2 border-dashed border-theme-border rounded-[3rem] mx-auto w-full max-w-3xl bg-theme-panel/50">
+        <div class="text-7xl mb-6">🤖</div>
+        <h3 class="text-3xl font-black text-theme-text mb-4">لا يوجد سيرفرات</h3>
+        <p class="text-lg">عذراً، لم نجد سيرفرات تملك فيها صلاحية الإدارة (Administrator).</p>
+      </div>
+    </div>
+
+    <!-- 3. Settings View -->
+    <div id="viewSettings" class="hidden flex-1 w-full flex flex-col transition-opacity duration-300">
+      <div class="flex items-center gap-5 mb-8 bg-theme-panel p-5 sm:p-7 rounded-3xl border border-theme-border shadow-md">
+        <button onclick="showView('Guilds')" class="p-3.5 rounded-xl bg-theme-base text-theme-muted hover:text-white hover:border-white hover:bg-theme-input transition-all border border-theme-border group shadow-sm active:scale-95">
+          <svg class="w-7 h-7 rtl:rotate-180 transform group-hover:-translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
+        <div class="flex items-center gap-5 flex-1 min-w-0">
+          <div class="w-16 h-16 rounded-2xl bg-theme-primary/10 border-2 border-theme-primary/50 flex flex-shrink-0 items-center justify-center font-bold text-2xl text-theme-primary overflow-hidden shadow-inner" id="dashGuildIcon"></div>
+          <div class="flex-1 min-w-0">
+            <h2 class="text-3xl sm:text-4xl font-black text-theme-text truncate pb-1" dir="auto"><span id="currentGuildName"></span></h2>
+            <p class="text-theme-primary font-bold text-sm tracking-wide bg-theme-primary/10 inline-block px-3 py-1 rounded-lg mt-1 border border-theme-primary/20">إدارة منظومة التذاكر الشاملة</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col lg:flex-row gap-8 items-start w-full">
+        <!-- Sidebar Navigation -->
+        <div class="w-full lg:w-80 flex-shrink-0 flex lg:flex-col gap-4 lg:sticky lg:top-28 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 scrollbar-hide">
+          <button onclick="switchTab('main')" id="tab-main" class="tab-btn min-w-[200px] lg:w-full text-right px-7 py-5 rounded-2xl bg-theme-primary/10 border-2 border-theme-primary text-theme-text font-black text-lg transition-all flex justify-between items-center group shadow-[0_4px_20px_rgba(192,38,211,0.3)_inset,0_0_10px_rgba(192,38,211,0.3)] flex-shrink-0">
+            <span class="flex items-center gap-3">الإعدادات الأساسية</span><span class="text-2xl transform transition-transform text-theme-primary drop-shadow-[0_0_5px_rgba(192,38,211,0.8)] hidden lg:block">←</span>
+          </button>
+          <button onclick="switchTab('options')" id="tab-options" class="tab-btn min-w-[200px] lg:w-full text-right px-7 py-5 rounded-2xl bg-theme-panel border-2 border-theme-border text-theme-muted font-bold text-lg hover:bg-theme-input hover:text-theme-text hover:border-theme-primary/50 transition-all flex justify-between items-center group shadow-sm flex-shrink-0">
+            <span class="flex items-center gap-3">الأزرار والخيارات</span><span class="text-2xl transform transition-transform opacity-0 group-hover:opacity-100 group-hover:-translate-x-2 text-theme-muted hidden lg:block">←</span>
+          </button>
+          <button onclick="switchTab('panel')" id="tab-panel" class="tab-btn min-w-[200px] lg:w-full text-right px-7 py-5 rounded-2xl bg-theme-panel border-2 border-theme-border text-theme-muted font-bold text-lg hover:bg-theme-input hover:text-theme-text hover:border-theme-primary/50 transition-all flex justify-between items-center group shadow-sm flex-shrink-0">
+            <span class="flex items-center gap-3">تعديل Panel (لوحة التذاكر)</span><span class="text-2xl transform transition-transform opacity-0 group-hover:opacity-100 group-hover:-translate-x-2 text-theme-muted hidden lg:block">←</span>
+          </button>
+        </div>
+
+        <div class="flex-1 flex flex-col w-full min-w-0 gap-6">
+          <div id="settingsLoading" class="hidden flex-col items-center justify-center py-32 gap-6 bg-theme-panel border border-theme-border rounded-[2.5rem] shadow-sm">
+            <div class="neon-cursor w-20 h-20">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 3 L6 19 L10 14.5 L17 14.5 Z" fill="black" stroke="var(--primary)" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M6 0 L6.5 2.5 L9 3 L6.5 3.5 L6 6 L5.5 3.5 L3 3 L5.5 2.5 Z" fill="white" stroke="none" filter="drop-shadow(0 0 4px var(--primary)) drop-shadow(0 0 2px white)"/>
+              </svg>
+            </div>
+            <p class="text-theme-primary font-black text-2xl tracking-wide">جاري تحميل الإعدادات...</p>
+          </div>
+
+          <div id="tabContent-main" class="flex flex-col gap-8 animate-slide-in w-full">
+            <!-- Roles Row -->
+            <section class="bg-theme-panel border border-theme-border rounded-[2.5rem] p-8 lg:p-10 flex flex-col shadow-sm relative overflow-hidden group/section">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-theme-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+              <div class="flex items-start gap-4 mb-6 relative z-10">
+                <div class="p-3.5 bg-theme-primary/10 rounded-2xl text-theme-primary border border-theme-primary/20"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg></div>
+                <div><h3 class="font-black text-2xl text-theme-text tracking-wide mb-1">رتب الدعم الفني</h3><p class="text-base text-theme-muted font-medium">الرتب القادرة على استلام التذكره.</p></div>
+              </div>
+              <div class="w-full h-px bg-gradient-to-r from-theme-border via-theme-border/50 to-transparent mb-6"></div>
+              <div id="rolesContainer" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 max-h-[350px] overflow-y-auto pr-3 scroll-smooth"></div>
+            </section>
+
+            <!-- Channels Row -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
+              <section class="bg-theme-panel border border-theme-border rounded-[2.5rem] p-8 flex flex-col shadow-sm relative overflow-hidden group/section">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-theme-primary/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+                <h3 class="font-black text-xl text-theme-text mb-2 relative z-10">فئة التذاكر (Category)</h3>
+                <p class="text-sm text-theme-muted font-medium mb-6 relative z-10">الفئة التي ستظهر بداخلها جميع التذاكر الجديدة.</p>
+                <div class="relative mt-auto z-10 flex gap-3 h-[52px] sm:h-[58px]">
+                  <div class="relative flex-1 h-full">
+                    <select id="catSelect" class="w-full h-full bg-theme-base border-2 border-theme-border rounded-xl px-4 py-3 sm:px-5 sm:py-4 text-theme-text font-bold text-base sm:text-lg hover:border-theme-primary/50 focus:outline-none focus:border-theme-primary focus:ring-1 focus:ring-theme-primary appearance-none cursor-pointer transition-colors shadow-inner"><option value="">بدون فئة (الخارج)</option></select>
+                    <div class="absolute left-5 top-1/2 -translate-y-1/2 text-theme-primary pointer-events-none font-bold text-xl">▼</div>
+                  </div>
+                  <div class="relative w-[52px] sm:w-[58px] focus-within:w-48 hover:w-48 transition-all duration-300 group flex-shrink-0 h-full">
+                    <input type="text" id="catSearch" oninput="filterSelect('catSelect', this.value)" class="w-full h-full bg-theme-base border-2 border-theme-border hover:border-theme-primary/50 focus:border-theme-primary rounded-xl pr-4 pl-10 pt-1 transition-all outline-none text-theme-text font-bold shadow-inner text-sm sm:text-base opacity-50 group-hover:opacity-100 group-focus-within:opacity-100 placeholder:text-transparent focus:placeholder:text-theme-muted hover:placeholder:text-theme-muted" placeholder="بحث...">
+                    <div class="absolute left-0 top-0 bottom-0 w-[52px] sm:w-[58px] flex items-center justify-center pointer-events-none text-theme-muted group-hover:text-theme-primary transition-colors text-lg"><svg class="w-5 h-5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></div>
+                  </div>
+                </div>
+              </section>
+              <section class="bg-theme-panel border border-theme-border rounded-[2.5rem] p-6 sm:p-8 flex flex-col shadow-sm relative overflow-hidden group/section">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-theme-primary/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+                <div class="flex items-center justify-between z-10 mb-2">
+                  <h3 class="font-black text-xl text-theme-text">سجل التذاكر (Logs)</h3>
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" id="logToggle" class="sr-only peer" checked onchange="toggleLog()">
+                    <div class="w-11 h-6 bg-gray-500/30 border border-theme-border peer-focus:outline-none rounded-full peer peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-gray-400 peer-checked:after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-theme-primary"></div>
+                  </label>
+                </div>
+                <p class="text-sm text-theme-muted font-medium mb-6 relative z-10">القناة المخصصة لحفظ نسخة من التذكرة بعد إغلاقها.</p>
+                <div class="relative mt-auto z-10 flex gap-3 h-[52px] sm:h-[58px]">
+                  <div class="relative flex-1 h-full">
+                    <select id="logSelect" class="w-full h-full bg-theme-input border-2 border-theme-border rounded-xl px-4 py-3 sm:px-5 sm:py-4 text-theme-text font-bold text-base sm:text-lg hover:border-theme-primary/50 focus:outline-none focus:border-theme-primary focus:ring-1 focus:ring-theme-primary appearance-none cursor-pointer transition-colors shadow-inner"><option value="">تحديد السجل</option></select>
+                    <div class="absolute left-5 top-1/2 -translate-y-1/2 text-theme-primary pointer-events-none font-bold text-xl" id="logArrow">▼</div>
+                  </div>
+                  <div class="relative w-[52px] sm:w-[58px] focus-within:w-48 hover:w-48 transition-all duration-300 group flex-shrink-0 h-full">
+                    <input type="text" id="logSearch" oninput="filterSelect('logSelect', this.value)" class="w-full h-full bg-theme-input border-2 border-theme-border hover:border-theme-primary/50 focus:border-theme-primary rounded-xl pr-4 pl-10 pt-1 transition-all outline-none text-theme-text font-bold shadow-inner text-sm sm:text-base opacity-50 group-hover:opacity-100 group-focus-within:opacity-100 placeholder:text-transparent focus:placeholder:text-theme-muted hover:placeholder:text-theme-muted" placeholder="بحث...">
+                    <div class="absolute left-0 top-0 bottom-0 w-[52px] sm:w-[58px] flex items-center justify-center pointer-events-none text-theme-muted group-hover:text-theme-primary transition-colors text-lg"><svg class="w-5 h-5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Rating Channel -->
+              <section class="bg-theme-panel border border-theme-border rounded-[2.5rem] p-6 sm:p-8 flex flex-col shadow-sm relative overflow-hidden group/section lg:col-span-2">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-theme-primary/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+                <div class="flex items-center justify-between z-10 mb-2">
+                  <h3 class="font-black text-xl text-theme-text">التقييمات (Rating)</h3>
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" id="ratingToggle" class="sr-only peer" checked onchange="toggleRating()">
+                    <div class="w-11 h-6 bg-gray-500/30 border border-theme-border peer-focus:outline-none rounded-full peer peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-gray-400 peer-checked:after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-theme-primary"></div>
+                  </label>
+                </div>
+                <p class="text-sm text-theme-muted font-medium mb-6 relative z-10">القناة المخصصة لإرسال تقييمات الدعم الفني.</p>
+                <div class="relative mt-auto z-10 flex gap-3 h-[52px] sm:h-[58px]">
+                  <div class="relative flex-1 h-full">
+                    <select id="ratingSelect" class="w-full h-full bg-theme-input border-2 border-theme-border rounded-xl px-4 py-3 sm:px-5 sm:py-4 text-theme-text font-bold text-base sm:text-lg hover:border-theme-primary/50 focus:outline-none focus:border-theme-primary focus:ring-1 focus:ring-theme-primary appearance-none cursor-pointer transition-colors shadow-inner"><option value="">تحديد قناة التقييمات</option></select>
+                    <div class="absolute left-5 top-1/2 -translate-y-1/2 text-theme-primary pointer-events-none font-bold text-xl" id="ratingArrow">▼</div>
+                  </div>
+                  <div class="relative w-[52px] sm:w-[58px] focus-within:w-48 hover:w-48 transition-all duration-300 group flex-shrink-0 h-full">
+                    <input type="text" id="ratingSearch" oninput="filterSelect('ratingSelect', this.value)" class="w-full h-full bg-theme-input border-2 border-theme-border hover:border-theme-primary/50 focus:border-theme-primary rounded-xl pr-4 pl-10 pt-1 transition-all outline-none text-theme-text font-bold shadow-inner text-sm sm:text-base opacity-50 group-hover:opacity-100 group-focus-within:opacity-100 placeholder:text-transparent focus:placeholder:text-theme-muted hover:placeholder:text-theme-muted" placeholder="بحث...">
+                    <div class="absolute left-0 top-0 bottom-0 w-[52px] sm:w-[58px] flex items-center justify-center pointer-events-none text-theme-muted group-hover:text-theme-primary transition-colors text-lg"><svg class="w-5 h-5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></div>
+                  </div>
+                </div>
+
+                <div id="autoRatingContainer" class="mt-6 flex items-center justify-between z-10 border-t border-theme-border/50 pt-5 transition-opacity duration-300">
+                  <div>
+                    <h4 class="font-black text-lg text-theme-text mb-1">التقييمات التلقائية</h4>
+                    <p class="text-sm text-theme-muted font-medium">إرسال التقييم تلقائياً بعد إغلاق التذكرة بدون انتظار العضو.</p>
+                  </div>
+                  <label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+                    <input type="checkbox" id="autoRatingToggle" class="sr-only peer">
+                    <div class="w-11 h-6 bg-gray-500/30 border border-theme-border peer-focus:outline-none rounded-full peer peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-gray-400 peer-checked:after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-theme-primary"></div>
+                  </label>
+                </div>
+              </section>
+            </div>
+
+            <!-- Reason Row -->
+            <section class="bg-theme-panel border border-theme-border rounded-[2.5rem] p-6 lg:p-8 flex items-center justify-between shadow-sm relative overflow-hidden group/section w-full">
+              <div class="absolute top-0 right-0 w-24 h-24 bg-theme-primary/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+              <div class="relative z-10 pr-2">
+                 <h3 class="font-black text-xl text-theme-text mb-1">تفعيل السبب</h3>
+                 <p class="text-sm text-theme-muted font-medium">كتابة السبب عند فتح التكت.</p>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer flex-shrink-0 z-10">
+                 <input type="checkbox" id="reasonToggle" class="sr-only peer">
+                 <div class="w-11 h-6 bg-gray-500/30 border border-theme-border peer-focus:outline-none rounded-full peer peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-gray-400 peer-checked:after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-theme-primary"></div>
+              </label>
+            </section>
+            
+            <div class="mt-4 flex justify-end">
+               <button onclick="saveSettings()" class="bg-gradient-to-r from-theme-primary to-theme-hover text-white font-black text-lg px-12 py-5 rounded-2xl shadow-[0_4px_25px_rgba(192,38,211,0.5)] hover:shadow-[0_8px_40px_rgba(192,38,211,0.8)] hover:-translate-y-1.5 transition-all flex items-center gap-4 active:scale-95 border border-white/10">
+                 <span>حفظ الإعدادات</span><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+               </button>
+            </div>
+          </div>
+
+           <div id="tabContent-options" class="hidden flex-col gap-8 animate-slide-in w-full">
+            <div class="bg-theme-panel border border-theme-border p-8 lg:p-10 rounded-[2.5rem] shadow-sm relative overflow-hidden">
+               <div class="absolute top-0 right-0 w-40 h-40 bg-theme-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+               <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 relative z-10 border-b border-theme-border/50 pb-6">
+                 <div><h3 class="font-black text-2xl text-theme-text mb-2">تخصيص الأزرار والخيارات</h3><p class="text-base text-theme-muted font-medium">اضغط على الخيار للتعديل عليه بشكل متقدم.</p></div>
+               </div>
+               
+               <div id="optionsList" class="flex flex-col gap-5 relative z-10"></div>
+               
+               <div class="mt-8 bg-theme-base p-6 rounded-2xl border border-theme-border flex flex-col gap-4 relative z-10">
+                 <h4 class="font-black text-xl text-theme-text">نمط عرض الـ Panel</h4>
+                 <div class="grid grid-cols-2 gap-4">
+                   <button id="modeSelector_buttons" onclick="setPanelMode('buttons')" class="py-4 rounded-xl font-bold border-2 transition-all flex flex-col items-center gap-2 bg-theme-primary/10 border-theme-primary text-theme-primary">
+                     <svg class="w-8 h-8 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h12a2 2 0 012 2v3a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm0 9a2 2 0 012-2h12a2 2 0 012 2v3a2 2 0 01-2 2H6a2 2 0 01-2-2v-3z"></path></svg>
+                     أزرار
+                   </button>
+                   <button id="modeSelector_select" onclick="setPanelMode('select')" class="py-4 rounded-xl font-bold border-2 transition-all flex flex-col items-center gap-2 bg-theme-panel border-theme-border text-theme-muted hover:border-theme-primary/50">
+                     <svg class="w-8 h-8 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm11 5l-3 3-3-3"></path></svg>
+                     قائمة
+                   </button>
+                 </div>
+               </div>
+               
+               <div class="mt-10 flex justify-end relative z-10 pt-6 border-t border-theme-border/50">
+                 <button onclick="saveOptions()" class="bg-gradient-to-r from-theme-primary to-theme-hover text-white font-black text-lg px-12 py-5 rounded-2xl shadow-[0_4px_25px_rgba(192,38,211,0.5)] hover:shadow-[0_8px_40px_rgba(192,38,211,0.8)] hover:-translate-y-1.5 transition-all flex items-center gap-4 active:scale-95 border border-white/10">
+                   <span>تأكيد وحفظ الخيارات</span><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                 </button>
+               </div>
+            </div>
+          </div>
+          
+          <div id="tabContent-panel" class="hidden flex-col gap-8 animate-slide-in w-full">
+            <div class="bg-theme-panel border border-theme-border p-8 lg:p-10 rounded-[2.5rem] shadow-sm relative overflow-hidden">
+               <div class="absolute top-0 right-0 w-40 h-40 bg-theme-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+               <div class="flex flex-col justify-between items-start gap-2 mb-8 relative z-10 border-b border-theme-border/50 pb-6">
+                 <h3 class="font-black text-2xl text-theme-text mb-2">إرسال Panel التذاكر</h3>
+                 <p class="text-base text-theme-muted font-medium">قم بتعديل العنوان والوصف وحدد القناة التي سيتم إرسال اللوحة الرئيسية إليها.</p>
+               </div>
+               
+               <div class="flex flex-col gap-6 relative z-10">
+                 <div class="flex flex-col gap-3">
+                   <label class="text-sm text-theme-muted font-bold uppercase tracking-wider">عنوان الـ Panel</label>
+                   <input type="text" id="panelTitleInput" value="تذاكر الدعم الفني" class="w-full bg-theme-input border-2 border-theme-border hover:border-theme-primary/50 focus:border-theme-primary rounded-xl px-5 py-4 outline-none text-base font-black text-theme-text transition-colors shadow-inner">
+                 </div>
+                 <div class="flex flex-col gap-3">
+                   <label class="text-sm text-theme-muted font-bold uppercase tracking-wider">وصف الـ Panel</label>
+                   <textarea id="panelDescInput" rows="3" class="w-full bg-theme-input border-2 border-theme-border hover:border-theme-primary/50 focus:border-theme-primary rounded-xl px-5 py-4 outline-none text-base font-bold text-theme-text transition-colors resize-y min-h-[100px] shadow-inner leading-relaxed">لفتح تذكرة الرجاء الضغط على الخيار المناسب من الأزرار بالأسفل.</textarea>
+                 </div>
+                 <div class="flex flex-col gap-3">
+                   <label class="text-sm text-theme-muted font-bold uppercase tracking-wider">رابط صورة الـ Panel (اختياري)</label>
+                   <div class="flex gap-2 relative">
+                     <input type="text" id="panelImageInput" class="w-full bg-theme-input border-2 border-theme-border hover:border-theme-primary/50 focus:border-theme-primary rounded-xl px-5 py-4 outline-none text-base font-bold text-theme-text transition-colors shadow-inner" placeholder="https://...">
+                     <input type="file" id="panelImageFile" accept="image/*" class="hidden" onchange="uploadPanelImage(event)">
+                     <button onclick="document.getElementById('panelImageFile').click()" class="bg-theme-base border-2 border-theme-border hover:border-theme-primary/50 text-theme-muted hover:text-theme-text px-4 py-4 rounded-xl transition-all flex items-center justify-center shrink-0">
+                       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                     </button>
+                   </div>
+                 </div>
+                 <div class="flex flex-col gap-3">
+                   <label class="text-sm text-theme-muted font-bold uppercase tracking-wider">القناة المستهدفة لإرسال الـ Panel</label>
+                   <div class="relative flex gap-3 h-[52px] sm:h-[58px]">
+                     <div class="relative flex-1 h-full">
+                       <select id="panelChannelSelect" class="w-full h-full bg-theme-input border-2 border-theme-border rounded-xl px-4 py-3 sm:px-5 sm:py-4 text-theme-text font-bold text-base hover:border-theme-primary/50 focus:outline-none focus:border-theme-primary shadow-inner appearance-none cursor-pointer">
+                         <option value="">تحديد قناة</option>
+                       </select>
+                       <div class="absolute left-5 top-1/2 -translate-y-1/2 text-theme-primary pointer-events-none font-bold text-xl">▼</div>
+                     </div>
+                     <div class="relative w-[52px] sm:w-[58px] focus-within:w-48 hover:w-48 transition-all duration-300 group flex-shrink-0 h-full">
+                       <input type="text" id="panelSearch" oninput="filterSelect('panelChannelSelect', this.value)" class="w-full h-full bg-theme-input border-2 border-theme-border hover:border-theme-primary/50 focus:border-theme-primary rounded-xl pr-4 pl-10 pt-1 transition-all outline-none text-theme-text font-bold shadow-inner text-sm sm:text-base opacity-50 group-hover:opacity-100 group-focus-within:opacity-100 placeholder:text-transparent focus:placeholder:text-theme-muted hover:placeholder:text-theme-muted" placeholder="بحث...">
+                       <div class="absolute left-0 top-0 bottom-0 w-[52px] sm:w-[58px] flex items-center justify-center pointer-events-none text-theme-muted group-hover:text-theme-primary transition-colors text-lg"><svg class="w-5 h-5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+               
+               <div class="mt-10 flex flex-col items-center gap-4 relative z-10 pt-6 border-t border-theme-border/50">
+                 <button onclick="sendPanel()" class="relative overflow-hidden bg-gradient-to-r from-theme-primary to-theme-hover text-white font-black text-2xl px-16 py-6 rounded-2xl shadow-[0_4px_30px_rgba(192,38,211,0.6)] hover:shadow-[0_8px_50px_rgba(192,38,211,0.9)] hover:-translate-y-1.5 transition-all flex items-center justify-center gap-4 active:scale-95 border border-white/20 w-full max-w-sm group">
+                   <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[110%] group-hover:animate-shine-rtl skew-x-[20deg]"></div>
+                   <span class="relative z-10 drop-shadow-md">إرسال البانل</span>
+                   <svg class="w-7 h-7 rtl:-scale-x-100 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                 </button>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Emoji Modal Picker -->
+  <div id="emojiModal" class="fixed inset-0 z-[150] hidden items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity opacity-0">
+    <div class="bg-theme-panel border border-theme-border rounded-3xl w-full max-w-lg p-6 shadow-2xl transform scale-95 transition-transform" id="emojiModalContent">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-black text-theme-text flex items-center gap-2">
+          <svg class="w-6 h-6 text-theme-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          إيموجيات السيرفر
+        </h3>
+        <button onclick="closeEmojiModal()" class="text-theme-muted hover:text-red-500 transition-colors p-1 bg-theme-base rounded-lg border border-theme-border hover:border-red-500/50">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div id="emojiLoading" class="hidden flex-col justify-center items-center py-10">
+        <div class="w-10 h-10 border-4 border-theme-primary/30 border-t-theme-primary rounded-full animate-spin"></div>
+        <p class="text-theme-muted mt-4 font-bold">جاري جلب الإيموجيات...</p>
+      </div>
+      <div id="emojiGrid" class="grid grid-cols-6 sm:grid-cols-8 gap-3 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+        <!-- Emojis will be rendered here -->
+      </div>
+      <div id="emojiEmpty" class="hidden text-center py-10 text-theme-muted font-bold box-border border border-dashed border-theme-border rounded-xl">
+        لا يوجد إيموجيات مخصصة في هذا السيرفر.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* =========================================
+       1. VARIABLES AND CONFIGURATION
+       ========================================= */
+    const WORKER_URL = 'https://dasbord.122007aboudiii.workers.dev'; 
+    const CLIENT_ID = '1356316450616508657'; 
+    const REDIRECT_URI = encodeURIComponent(window.location.href.split('?')[0].split('#')[0]); 
+    
+    // Status flags limiters (Rate Limiting/Debouncing)
+    let isFetchingReq = false;
+    let isSavingReq = false;
+    let isSendingReq = false;
+
+    // HTML Escaper for XSS Protection (Mitigating DOM Injection)
+    function escapeHTML(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+    
+    let token = localStorage.getItem('discord_token');
+    
+    // Hide login view immediately if token exists to prevent flashing on reload
+    document.addEventListener('DOMContentLoaded', () => {
+      if (token && !new URLSearchParams(window.location.search).get('code')) {
+        document.getElementById('viewLogin').classList.add('hidden');
+      }
+    });
+
+    let guildsData = [];
+    let currentGuildId = null;
+    let selectedRoles = [];
+    let ticketOptions = [
+      { label: 'دعم الفني', enabled: true, color: 'Primary', emoji: '🎫', openMessage: 'يرجى انتظار مسؤولين التذكرة الرد عليك' },
+      { label: 'استفسار', enabled: false, color: 'Primary', emoji: '❔', openMessage: '' },
+      { label: 'الابلاغ عن مشكلة', enabled: false, color: 'Danger', emoji: '⚠️', openMessage: '' },
+      { label: 'شكوى على اداري', enabled: false, color: 'Secondary', emoji: '❗', openMessage: '' },
+      { label: 'تقديم اداره', enabled: false, color: 'Secondary', emoji: '📋', openMessage: '' }
+    ];
+    let expandedOptionIndex = null;
+    let userHasAdmin = false;
+    let panelMode = 'buttons';
+
+    function setPanelMode(mode) {
+      panelMode = mode;
+      
+      const btnModeSelect = document.getElementById('modeSelector_buttons');
+      const listModeSelect = document.getElementById('modeSelector_select');
+      
+      if (btnModeSelect && listModeSelect) {
+        if (mode === 'buttons') {
+           btnModeSelect.className = 'py-4 rounded-xl font-bold border-2 transition-all flex flex-col items-center gap-2 bg-theme-primary/10 border-theme-primary text-theme-primary';
+           listModeSelect.className = 'py-4 rounded-xl font-bold border-2 transition-all flex flex-col items-center gap-2 bg-theme-panel border-theme-border text-theme-muted hover:border-theme-primary/50';
+        } else {
+           listModeSelect.className = 'py-4 rounded-xl font-bold border-2 transition-all flex flex-col items-center gap-2 bg-theme-primary/10 border-theme-primary text-theme-primary';
+           btnModeSelect.className = 'py-4 rounded-xl font-bold border-2 transition-all flex flex-col items-center gap-2 bg-theme-panel border-theme-border text-theme-muted hover:border-theme-primary/50';
+        }
+      }
+    }
+
+    function toggleLog() {
+      const isChecked = document.getElementById('logToggle').checked;
+      const select = document.getElementById('logSelect');
+      const arrow = document.getElementById('logArrow');
+      if(isChecked) {
+        select.disabled = false;
+        select.classList.remove('opacity-50', 'bg-theme-base');
+        select.classList.add('bg-theme-input');
+        if(arrow) arrow.classList.remove('opacity-50');
+      } else {
+        select.disabled = true;
+        select.classList.add('opacity-50', 'bg-theme-base');
+        select.classList.remove('bg-theme-input');
+        if(arrow) arrow.classList.add('opacity-50');
+      }
+    }
+    
+    function toggleRating() {
+      const isChecked = document.getElementById('ratingToggle').checked;
+      const select = document.getElementById('ratingSelect');
+      const arrow = document.getElementById('ratingArrow');
+      const search = document.getElementById('ratingSearch');
+      const autoRatingContainer = document.getElementById('autoRatingContainer');
+      if(isChecked) {
+        select.disabled = false;
+        if(search) search.disabled = false;
+        select.classList.remove('opacity-50', 'bg-theme-base');
+        select.classList.add('bg-theme-input');
+        if(arrow) arrow.classList.remove('opacity-50');
+        if(autoRatingContainer) {
+          autoRatingContainer.classList.remove('opacity-50', 'pointer-events-none');
+          autoRatingContainer.style.filter = "grayscale(0)";
+        }
+      } else {
+        select.disabled = true;
+        if(search) search.disabled = true;
+        select.classList.add('opacity-50', 'bg-theme-base');
+        select.classList.remove('bg-theme-input');
+        if(arrow) arrow.classList.add('opacity-50');
+        if(autoRatingContainer) {
+          autoRatingContainer.classList.add('opacity-50', 'pointer-events-none');
+          autoRatingContainer.style.filter = "grayscale(1)";
+        }
+      }
+    }
+
+    function changeLang(lang) {
+      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=${location.hostname}; path=/;`;
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.${location.hostname}; path=/;`;
+      
+      if (lang !== 'ar') {
+        document.cookie = `googtrans=/ar/${lang}; path=/;`;
+        document.cookie = `googtrans=/ar/${lang}; domain=${location.hostname}; path=/;`;
+        document.cookie = `googtrans=/ar/${lang}; domain=.${location.hostname}; path=/;`;
+      }
+      
+      const frame = document.querySelector('.goog-te-combo');
+      if (frame) {
+         if (lang === 'ar') frame.value = '';
+         else frame.value = lang;
+         frame.dispatchEvent(new Event('change'));
+      } else {
+         location.reload();
+      }
+    }
+
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      
+      let iconSvg = '';
+      let borderAccent = '';
+      let iconColorClass = '';
+      let barColor = '';
+      
+      if (type === 'red' || type === 'error') {
+        borderAccent = 'border-red-500';
+        iconColorClass = 'text-red-500 bg-red-500/10';
+        barColor = 'bg-red-500';
+        iconSvg = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+      } else if (type === 'yellow' || type === 'warning') {
+        borderAccent = 'border-amber-500';
+        iconColorClass = 'text-amber-500 bg-amber-500/10';
+        barColor = 'bg-amber-500';
+        iconSvg = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>`;
+      } else {
+        borderAccent = 'border-emerald-500';
+        iconColorClass = 'text-emerald-500 bg-emerald-500/10';
+        barColor = 'bg-emerald-500';
+        iconSvg = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
+      }
+      
+      toast.className = `relative flex flex-shrink-0 items-center gap-4 bg-theme-panel border-r-4 ${borderAccent} shadow-[0_15px_50px_rgba(0,0,0,0.4)] p-4 sm:pr-5 rounded-2xl transform translate-x-full opacity-0 transition-all duration-300 pointer-events-auto w-auto min-w-[250px] max-w-[90vw] overflow-hidden border-y border-l border-theme-border`;
+      
+      toast.innerHTML = `
+        <div class="flex-shrink-0 ${iconColorClass} p-2 rounded-xl border border-current">
+          ${iconSvg}
+        </div>
+        <span class="flex-1 font-bold text-theme-text text-sm sm:text-base ml-2">${escapeHTML(message)}</span>
+        <div class="absolute bottom-0 right-0 h-1 ${barColor} animate-[toastProgress_2s_linear_forwards] opacity-70"></div>
+      `;
+      
+      container.insertBefore(toast, container.firstChild);
+      
+      // Enforce max toasts
+      if (container.children.length > Math.min(5, Math.floor(window.innerHeight / 100))) {
+        const excess = Array.from(container.children).slice(5);
+        excess.forEach(t => {
+           t.classList.add('translate-x-full', 'opacity-0');
+           setTimeout(() => t.remove(), 300);
+        });
+      }
+      
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-x-full', 'opacity-0');
+      });
+      
+      setTimeout(() => { 
+        toast.classList.add('translate-x-full', 'opacity-0'); 
+        toast.style.margin = '0';
+        toast.style.padding = '0';
+        toast.style.height = '0';
+        setTimeout(() => toast.remove(), 300); 
+      }, 2000);
+    }
+
+    function filterSelect(selectId, searchTerm) {
+      const select = document.getElementById(selectId);
+      if (!select) return;
+      
+      if (!select.originalOptions) {
+        select.originalOptions = Array.from(select.options).map(o => ({ value: o.value, text: o.text }));
+      }
+      
+      const valBefore = select.value;
+      const lowerTerm = searchTerm.toLowerCase();
+      
+      select.innerHTML = '';
+      select.originalOptions.forEach(optData => {
+        if (!optData.value || optData.text.toLowerCase().includes(lowerTerm)) {
+          const o = document.createElement('option');
+          o.value = optData.value;
+          o.textContent = optData.text;
+          select.appendChild(o);
+        }
+      });
+      
+      select.value = valBefore;
+      if (select.selectedIndex === -1 && select.options.length > 0) {
+        select.selectedIndex = 0;
+      }
+    }
+
+    // Theme logic
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('flx_theme', theme);
+    }
+    const savedTheme = localStorage.getItem('flx_theme');
+    if (savedTheme) setTheme(savedTheme);
+
+    function showView(viewName) {
+      document.getElementById('viewLogin').classList.add('hidden');
+      document.getElementById('viewGuilds').classList.add('hidden');
+      document.getElementById('viewSettings').classList.add('hidden');
+      if (viewName === 'Login') document.getElementById('viewLogin').classList.remove('hidden');
+      if (viewName === 'Guilds') document.getElementById('viewGuilds').classList.remove('hidden');
+      if (viewName === 'Settings') document.getElementById('viewSettings').classList.remove('hidden');
+    }
+
+    function switchTab(tabId) {
+      ['main', 'options', 'panel'].forEach(id => {
+        const content = document.getElementById(`tabContent-${id}`);
+        if(content) content.classList.add('hidden');
+      });
+      
+      const unselectedClass = "tab-btn min-w-[200px] lg:w-full text-right px-7 py-5 rounded-2xl bg-theme-panel border-2 border-theme-border text-theme-muted font-bold text-lg hover:bg-theme-input hover:text-theme-text hover:border-theme-primary/50 transition-all flex justify-between items-center group shadow-sm flex-shrink-0";
+      const selectedClass = "tab-btn min-w-[200px] lg:w-full text-right px-7 py-5 rounded-2xl bg-theme-primary/10 border-2 border-theme-primary text-theme-text font-black text-lg transition-all flex justify-between items-center group shadow-[0_4px_20px_rgba(192,38,211,0.3)_inset,0_0_10px_rgba(192,38,211,0.3)] flex-shrink-0";
+
+      ['main', 'options', 'panel'].forEach(id => {
+        const btn = document.getElementById(`tab-${id}`);
+        if (btn) {
+          btn.className = id === tabId ? selectedClass : unselectedClass;
+          btn.querySelector('span:last-child').className = id === tabId 
+            ? "text-2xl transform transition-transform text-theme-primary drop-shadow-[0_0_5px_rgba(192,38,211,0.8)] hidden lg:block"
+            : "text-2xl transform transition-transform opacity-0 group-hover:opacity-100 group-hover:-translate-x-2 text-theme-muted hidden lg:block";
+        }
+      });
+      
+      const activeContent = document.getElementById(`tabContent-${tabId}`);
+      if (activeContent) activeContent.classList.remove('hidden');
+    }
+
+    async function init() {
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get('code');
+      const returnedState = params.get('state');
+      const savedState = sessionStorage.getItem('oauth_state');
+      const guildIdParam = params.get('guild_id');
+
+      if (code && !token) {
+        showView('Login');
+        
+        // CSRF (State) Verification
+        if (!savedState || returnedState !== savedState) {
+            showToast('فشل التحقق من الجلسة (CSRF Protection)، يرجى إعادة تسجيل الدخول', 'error');
+            sessionStorage.removeItem('oauth_state');
+            return;
+        }
+        sessionStorage.removeItem('oauth_state');
+
+        try {
+          const res = await fetch(`${WORKER_URL}/auth/callback`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code, redirectUri: window.location.href.split('?')[0].split('#')[0] })
+          });
+          const data = await res.json();
+          if (data.access_token) {
+            token = data.access_token;
+            localStorage.setItem('discord_token', token);
+            // If they returned from adding bot with guild_id, keep it in URL
+            if(guildIdParam) window.location.href = window.location.href.split('?')[0] + '?guild_id=' + guildIdParam;
+            else window.location.href = window.location.href.split('?')[0];
+          } else {
+            showToast('فشل تسجيل الدخول: ' + escapeHTML(data.error || 'Unknown error'), 'red');
+            localStorage.removeItem('discord_token');
+          }
+        } catch (e) { showToast('خطأ في الاتصال بخادم Worker', 'red'); }
+        return;
+      }
+      
+      if (token) {
+        document.getElementById('userProfile').classList.replace('hidden', 'flex');
+        showView('Guilds');
+        fetchGuilds(guildIdParam);
+      } else {
+        showView('Login');
+        const serverCountEl = document.getElementById('serverCountAnim');
+        if (serverCountEl) animateValue(serverCountEl, 0, 6500, 5000);
+      }
+    }
+
+    function animateValue(obj, start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            obj.innerHTML = "+" + Math.floor(easeOut * (end - start) + start).toLocaleString('en-US');
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                obj.innerHTML = "+" + end.toLocaleString('en-US');
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    function generateState() {
+        const stateArray = new Uint8Array(16);
+        crypto.getRandomValues(stateArray);
+        return Array.from(stateArray, dec => dec.toString(16).padStart(2, '0')).join('');
+    }
+
+    function login() { 
+      const state = generateState();
+      sessionStorage.setItem('oauth_state', state);
+      window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=identify%20guilds&state=${state}`; 
+    }
+    
+    function logout() { token = null; localStorage.removeItem('discord_token'); window.location.href = window.location.href.split('?')[0]; }
+
+    function handleAddBot(e, guildId) {
+      e.stopPropagation();
+      const state = generateState();
+      sessionStorage.setItem('oauth_state', state);
+      const oauthUrl = `https://discord.com/oauth2/authorize?client_id=${CLIENT_ID}&permissions=8&integration_type=0&scope=bot&guild_id=${guildId}&disable_guild_select=true&redirect_uri=${REDIRECT_URI}&response_type=code&state=${state}`;
+      window.location.href = oauthUrl;
+    }
+
+    async function fetchGuilds(autoOpenGuildId = null) {
+      if (isFetchingReq) return;
+      isFetchingReq = true;
+      if (!WORKER_URL) { isFetchingReq = false; return showToast('الرجاء إضافة رابط Worker', 'red'); }
+      document.getElementById('guildsLoading').classList.replace('hidden', 'flex');
+      const refreshBtnSvg = document.getElementById('refreshBtn')?.querySelector('svg');
+      if (refreshBtnSvg) refreshBtnSvg.classList.add('animate-spin');
+      document.getElementById('guildsContainer').innerHTML = '';
+      document.getElementById('guildsEmpty').classList.add('hidden');
+      
+      try {
+        const res = await fetch(`${WORKER_URL}/guilds`, { headers: { 'Authorization': `Bearer ${token}` } });
+        if (res.status === 401) return logout();
+        const data = await res.json();
+        
+        document.getElementById('guildsLoading').classList.replace('flex', 'hidden');
+
+        if (!res.ok || !data.guilds) {
+          const errMsg = (data.message || data.error || '').toLowerCase();
+          if (errMsg.includes('token') || errMsg.includes('unauthorized') || res.status === 401 || res.status === 403) {
+            return logout();
+          }
+          
+          showToast(`حدث خطأ: ${data.message || data.error || 'حاول مجدداً'}`, 'red');
+          document.getElementById('guildsEmpty').classList.remove('hidden');
+          return;
+        }
+
+        if (data.user) {
+          document.getElementById('userName').textContent = data.user.username; // Text is safe
+          const avatarImg = document.getElementById('userAvatar');
+          avatarImg.src = data.user.avatar ? `https://cdn.discordapp.com/avatars/${escapeHTML(data.user.id)}/${escapeHTML(data.user.avatar)}.png` : 'https://cdn.discordapp.com/embed/avatars/0.png';
+          avatarImg.classList.remove('hidden');
+        }
+        
+        if (data.guilds && data.guilds.length > 0) {
+          guildsData = data.guilds;
+          const container = document.getElementById('guildsContainer');
+          let guildToOpen = null;
+
+          guildsData.forEach((g, index) => {
+            if (autoOpenGuildId && g.id === autoOpenGuildId) { guildToOpen = g; }
+
+            const el = document.createElement('div');
+            let btnHtml = '';
+            
+            // XSS Protection Escaping
+            const gNameEscaped = escapeHTML(g.name);
+            const gNameInitialEscaped = escapeHTML(g.name[0] || '?');
+            
+            // Image fixing for guild icons
+            const iconUrl = g.icon 
+              ? `https://cdn.discordapp.com/icons/${escapeHTML(g.id)}/${escapeHTML(g.icon)}.webp?size=256` 
+              : '';
+              
+            const iconHtml = g.icon 
+              ? `<img src="${iconUrl}" onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='block';" class="w-full h-full object-cover"><span class="text-2xl font-black hidden">${gNameInitialEscaped}</span>` 
+              : `<span class="text-2xl font-black">${gNameInitialEscaped}</span>`;
+
+            let badgeHtml = '';
+            if (g.owner) {
+              badgeHtml = `<div class="text-sm font-bold bg-[#eab308]/10 text-[#eab308] inline-flex items-center gap-1.5 px-3 py-1 rounded-lg border border-[#eab308]/20"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg> مالك السيرفر</div>`;
+            } else if (g.isAdmin) {
+              badgeHtml = `<div class="text-sm font-bold bg-[#a855f7]/10 text-[#a855f7] inline-flex items-center gap-1.5 px-3 py-1 rounded-lg border border-[#a855f7]/20"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg> مسؤول</div>`;
+            } else {
+              badgeHtml = `<div class="text-sm text-theme-muted font-bold bg-theme-base inline-flex items-center gap-1.5 px-3 py-1 rounded-lg border border-theme-border/50">عضو</div>`;
+            }
+
+            if (g.isAdmin) {
+              // Admin user
+              el.className = "bg-theme-panel border-2 border-theme-border rounded-[2rem] p-7 flex flex-col gap-4 transition-all duration-300 hover:-translate-y-2 hover:border-theme-primary/70 hover:shadow-[0_10px_40px_rgba(192,38,211,0.2)] shadow-sm group";
+              
+              const editBtnHtml = `
+                <div class="flex items-center gap-3 w-full">
+                  <button onclick="openSettings(guildsData[${index}])" class="flex-1 flex justify-center items-center gap-2 bg-theme-primary/10 text-theme-primary border border-theme-primary/30 px-4 py-3 rounded-xl text-base font-black hover:bg-theme-primary hover:text-white transition-all shadow-sm active:scale-95 focus:outline-none focus:ring-2 focus:ring-theme-primary/30"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> تعديل</button>
+                </div>
+              `;
+
+              const addBtnHtml = `
+                <div class="flex items-center gap-3 w-full" id="addBotContainer_${g.id}">
+                  <button onclick="handleAddBot(event, '${escapeHTML(g.id)}')" class="btn-shine-effect relative overflow-hidden flex-1 flex justify-center items-center gap-2 bg-blue-500/10 text-blue-400 border border-blue-500/30 px-4 py-3 rounded-xl text-base font-black hover:bg-blue-500 hover:text-white transition-all shadow-sm active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500/30 group">
+                    <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path></svg>
+                    <span class="relative z-10">إضافة البوت</span>
+                  </button>
+                </div>
+              `;
+
+              if (g.hasBot) {
+                btnHtml = editBtnHtml;
+              } else {
+                btnHtml = addBtnHtml;
+                
+                // Client-side verification to fix Worker API limitations
+                if (WORKER_URL) {
+                  const currentToken = localStorage.getItem('discord_token');
+                  fetch(WORKER_URL + '/guild/' + g.id + '/channels', { headers: { 'Authorization': 'Bearer ' + currentToken } })
+                    .then(res => res.json())
+                    .then(data => {
+                      if (data && data.channels && data.channels.length > 0) {
+                        g.hasBot = true; 
+                        const targetEl = document.getElementById('addBotContainer_' + g.id);
+                        if (targetEl) targetEl.outerHTML = editBtnHtml;
+                      }
+                    }).catch(e => console.log('Silently ignoring verify error', e));
+                }
+              }
+            } else {
+              // Not admin
+              el.className = "cursor-not-allowed bg-theme-base border-2 border-theme-border/50 rounded-[2rem] p-7 flex flex-col gap-4 transition-all opacity-60 hover:opacity-100 shadow-sm";
+              el.onclick = () => { showToast("لا يمكنك التعديل على السيرفر و انت عضو", "red"); };
+              btnHtml = `<span class="block bg-gray-500/10 text-gray-500 border border-gray-500/30 px-5 py-3 rounded-xl text-sm font-bold w-full text-center">عضو (لا تملك الصلاحية)</span>`;
+            }
+
+            el.innerHTML = `
+              <div class="flex items-center gap-5">
+                <div class="w-20 h-20 rounded-[1.5rem] bg-theme-input flex flex-shrink-0 items-center justify-center font-bold text-3xl text-theme-primary border-2 border-theme-border overflow-hidden shadow-inner group-hover:border-theme-primary/30 transition-colors">
+                  ${iconHtml}
+                </div>
+                <div class="overflow-hidden flex-1 min-w-0">
+                  <h3 class="font-extrabold text-2xl text-theme-text truncate pb-1" dir="auto" title="${gNameEscaped}">${gNameEscaped}</h3>
+                  <div class="mt-1">${badgeHtml}</div>
+                </div>
+              </div>
+              <div class="mt-auto pt-3">
+                ${btnHtml}
+              </div>`;
+            container.appendChild(el);
+          });
+          
+          if (guildToOpen && guildToOpen.isAdmin) {
+             window.history.replaceState({}, '', window.location.pathname);
+             openSettings(guildToOpen);
+          }
+        } else { 
+          document.getElementById('guildsEmpty').classList.remove('hidden'); 
+        }
+      } catch (err) { 
+        document.getElementById('guildsLoading').classList.replace('flex', 'hidden'); 
+        showToast('حدث خطأ في تحميل السيرفرات', 'red'); 
+      } finally {
+        isFetchingReq = false;
+        const refreshBtnSvg = document.getElementById('refreshBtn')?.querySelector('svg');
+        if (refreshBtnSvg) refreshBtnSvg.classList.remove('animate-spin');
+      }
+    }
+
+    async function openSettings(guild) {
+      if (!guild.isAdmin) {
+         showToast("لا يمكنك التعديل على السيرفر و انت عضو", "red");
+         return;
+      }
+      currentGuildId = guild.id;
+      userHasAdmin = guild.isAdmin;
+      guildEmojisCache = null;
+      
+      const gNameEscaped = escapeHTML(guild.name);
+      const guildNameInitialEscaped = escapeHTML(guild.name[0] || '?');
+      document.getElementById('currentGuildName').textContent = guild.name; // Text is safe
+      
+      const iconUrl = guild.icon ? `https://cdn.discordapp.com/icons/${escapeHTML(guild.id)}/${escapeHTML(guild.icon)}.png?size=128` : '';
+      document.getElementById('dashGuildIcon').innerHTML = guild.icon 
+        ? `<img src="${iconUrl}" onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='block';" class="w-full h-full object-cover"><span class="text-2xl hidden">${guildNameInitialEscaped}</span>`
+        : guildNameInitialEscaped;
+        
+      showView('Settings');
+      switchTab('main');
+      document.getElementById('settingsLoading').classList.replace('hidden', 'flex');
+      document.getElementById('tabContent-main').classList.add('hidden');
+
+      const headers = { 'Authorization': `Bearer ${token}` };
+
+      try {
+        const [channelsRes, rolesRes, settingsRes, emojisRes] = await Promise.all([
+          fetch(`${WORKER_URL}/guild/${guild.id}/channels`, { headers }),
+          fetch(`${WORKER_URL}/guild/${guild.id}/roles`, { headers }),
+          fetch(`${WORKER_URL}/guild/${guild.id}/ticket-settings`, { headers }),
+          fetch(`${WORKER_URL}/guild/${guild.id}/emojis`, { headers }).catch(() => null)
+        ]);
+        
+        if (emojisRes && emojisRes.ok) {
+          try {
+            const emojiData = await emojisRes.json();
+            if (Array.isArray(emojiData) && emojiData.length > 0) {
+              guildEmojisCache = emojiData;
+            } else if (emojiData && Array.isArray(emojiData.emojis) && emojiData.emojis.length > 0) {
+              guildEmojisCache = emojiData.emojis;
+            } else if (emojiData && Array.isArray(emojiData.emojis)) {
+              guildEmojisCache = emojiData.emojis; // even if 0
+            } else {
+              guildEmojisCache = [];
+            }
+          } catch(e) { guildEmojisCache = null; }
+        } else {
+           guildEmojisCache = null;
+        }
+        
+        if (!channelsRes.ok || !rolesRes.ok) {
+          showToast('تنبيه: البوت لا يمتلك صلاحية داخل السيرفر أو غير موجود!', 'yellow');
+        }
+
+        const channelsData = await channelsRes.json();
+        const rolesData = await rolesRes.json();
+        const settingsData = await settingsRes.json();
+
+        const catSelect = document.getElementById('catSelect');
+        delete catSelect.originalOptions;
+        catSelect.innerHTML = '<option value="">بدون فئة (الخارج)</option>';
+        if (channelsData.channels) {
+          channelsData.channels.filter(c => c.type === 4).forEach(c => {
+            const opt = document.createElement('option'); opt.value = c.id; opt.textContent = c.name; catSelect.appendChild(opt);
+          });
+          
+          const logSelect = document.getElementById('logSelect');
+          delete logSelect.originalOptions;
+          logSelect.innerHTML = '<option value="">تحديد قناة السجل</option>';
+          const ratingSelect = document.getElementById('ratingSelect');
+          if (ratingSelect) { delete ratingSelect.originalOptions; ratingSelect.innerHTML = '<option value="">تحديد قناة التقييمات</option>'; }
+          const panelChannelSelect = document.getElementById('panelChannelSelect');
+          if (panelChannelSelect) { delete panelChannelSelect.originalOptions; panelChannelSelect.innerHTML = '<option value="">تحديد قناة</option>'; }
+          
+          channelsData.channels.filter(c => c.type === 0).forEach(c => {
+            const opt = document.createElement('option'); opt.value = c.id; opt.textContent = `# ${c.name}`; logSelect.appendChild(opt);
+            if (ratingSelect) {
+              const opt2 = document.createElement('option'); opt2.value = c.id; opt2.textContent = `# ${c.name}`; ratingSelect.appendChild(opt2);
+            }
+            if (panelChannelSelect) {
+              const opt3 = document.createElement('option'); opt3.value = c.id; opt3.textContent = `# ${c.name}`; panelChannelSelect.appendChild(opt3);
+            }
+          });
+          
+          ['catSearch', 'logSearch', 'ratingSearch', 'panelSearch'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = '';
+          });
+        }
+        
+        window.allRoles = rolesData.roles || [];
+        
+        if (settingsData) {
+          catSelect.value = settingsData.category_id || '';
+          
+          if (settingsData.full_settings) {
+            try {
+               const parsedFullSettings = typeof settingsData.full_settings === 'string' ? JSON.parse(settingsData.full_settings) : settingsData.full_settings;
+               if (parsedFullSettings) {
+                  if (parsedFullSettings.ticketOptions) {
+                      ticketOptions = parsedFullSettings.ticketOptions;
+                  } else if (parsedFullSettings.buttonOptions) {
+                      ticketOptions = parsedFullSettings.buttonOptions;
+                  }
+                  
+                  const logSelect = document.getElementById('logSelect');
+                  const ratingSelect = document.getElementById('ratingSelect');
+                  
+                  logSelect.value = parsedFullSettings.logChannelId || '';
+                  const logToggle = document.getElementById('logToggle');
+                  if(logToggle) {
+                    logToggle.checked = parsedFullSettings.logEnabled !== undefined ? parsedFullSettings.logEnabled : true;
+                    toggleLog();
+                  }
+
+                  if (ratingSelect) {
+                     ratingSelect.value = parsedFullSettings.ratingChannelId || '';
+                     const ratingToggle = document.getElementById('ratingToggle');
+                     if(ratingToggle) {
+                       ratingToggle.checked = parsedFullSettings.ratingEnabled !== undefined ? parsedFullSettings.ratingEnabled : true;
+                       toggleRating();
+                     }
+                  }
+                  
+                  const autoRatingToggle = document.getElementById('autoRatingToggle');
+                  if(autoRatingToggle) {
+                    autoRatingToggle.checked = parsedFullSettings.autoRatingEnabled || false;
+                  }
+
+                  const reasonToggle = document.getElementById('reasonToggle');
+                  if(reasonToggle) {
+                    reasonToggle.checked = parsedFullSettings.reasonEnabled || false;
+                  }
+                  
+                  const panelTitleInput = document.getElementById('panelTitleInput');
+                  const panelDescInput = document.getElementById('panelDescInput');
+                  const panelChannelSelect = document.getElementById('panelChannelSelect');
+                  
+                  if (panelTitleInput && parsedFullSettings.panelTitle) panelTitleInput.value = parsedFullSettings.panelTitle;
+                  if (panelDescInput && parsedFullSettings.panelDesc) panelDescInput.value = parsedFullSettings.panelDesc;
+                  if (panelChannelSelect && parsedFullSettings.panelChannelId) panelChannelSelect.value = parsedFullSettings.panelChannelId;
+                  
+                  const loadedPanelMode = parsedFullSettings.panelMode || (parsedFullSettings.buttonsMode ? 'buttons' : (parsedFullSettings.selectEnabled ? 'select' : 'buttons'));
+                  setPanelMode(loadedPanelMode);
+                  
+                  const pi = document.getElementById('panelImageInput');
+                  if (pi && parsedFullSettings.panelImage) pi.value = parsedFullSettings.panelImage;
+               }
+            } catch(jsonErr) {
+               console.error("Error parsing full_settings: ", jsonErr);
+            }
+          }
+          selectedRoles = settingsData.support_roles || [];
+        }
+
+        const rolesContainer = document.getElementById('rolesContainer');
+        rolesContainer.innerHTML = '';
+        if (rolesData.roles && rolesData.roles.length > 0) {
+          rolesData.roles.forEach(r => {
+            const isSelected = selectedRoles.includes(r.id);
+            const roleColorStr = r.color ? `#${r.color.toString(16).padStart(6, '0')}` : 'currentColor';
+            const rDiv = document.createElement('div');
+            const rNameEscaped = escapeHTML(r.name);
+            
+            rDiv.className = `flex items-center gap-4 p-4 rounded-xl cursor-pointer transition-all border-2 ${isSelected ? 'bg-theme-primary/10 border-theme-primary text-theme-primary shadow-sm' : 'bg-theme-base border-theme-border text-theme-muted hover:border-theme-primary/50'}`;
+            rDiv.innerHTML = `
+              <div class="checkbox-box w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0 transition-colors ${isSelected ? 'bg-theme-primary text-white border-none shadow-[0_0_10px_rgba(192,38,211,0.3)]' : 'border-[3px] border-theme-border bg-theme-input'}">
+                ${isSelected ? '<span class="text-sm font-black leading-none pb-0.5">✓</span>' : ''}
+              </div>
+              <div class="w-3.5 h-3.5 rounded-full flex-shrink-0 shadow-sm" style="background-color: ${escapeHTML(roleColorStr)}"></div>
+              <span class="font-extrabold text-base truncate flex-1 ${isSelected ? 'text-theme-text' : 'text-theme-muted'}">${rNameEscaped}</span>
+            `;
+            
+            rDiv.onclick = () => {
+              const idx = selectedRoles.indexOf(r.id);
+              if (idx > -1) selectedRoles.splice(idx, 1); else selectedRoles.push(r.id);
+              const currentSelected = selectedRoles.includes(r.id);
+              rDiv.className = `flex items-center gap-4 p-4 rounded-xl cursor-pointer transition-all border-2 ${currentSelected ? 'bg-theme-primary/10 border-theme-primary text-theme-primary shadow-sm' : 'bg-theme-base border-theme-border text-theme-muted hover:border-theme-primary/50'}`;
+              rDiv.querySelector('.checkbox-box').className = `checkbox-box w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0 transition-colors ${currentSelected ? 'bg-theme-primary text-white border-none shadow-[0_0_10px_rgba(192,38,211,0.3)]' : 'border-[3px] border-theme-border bg-theme-input'}`;
+              rDiv.querySelector('.checkbox-box').innerHTML = currentSelected ? '<span class="text-sm font-black leading-none pb-0.5">✓</span>' : '';
+              rDiv.querySelector('span.truncate').className = `font-extrabold text-base truncate flex-1 ${currentSelected ? 'text-theme-text' : 'text-theme-muted'}`;
+            };
+            rolesContainer.appendChild(rDiv);
+          });
+        }
+        
+        renderOptions();
+        
+        document.getElementById('settingsLoading').classList.replace('flex', 'hidden');
+        document.getElementById('tabContent-main').classList.remove('hidden');
+      } catch (err) {
+        document.getElementById('settingsLoading').classList.replace('flex', 'hidden');
+        showToast('حدث خطأ في تحميل البيانات من السيرفر', 'red');
+        showView('Guilds');
+      }
+    }
+
+    function renderOptions() {
+      const container = document.getElementById('optionsList');
+      container.innerHTML = '';
+      ticketOptions.forEach((opt, idx) => {
+        const isExp = expandedOptionIndex === idx;
+        const outerDiv = document.createElement('div');
+        
+        outerDiv.className = `border-2 transition-all duration-300 rounded-[2rem] overflow-hidden ${isExp ? 'border-theme-primary shadow-[0_8px_30px_rgba(192,38,211,0.1)]' : 'border-theme-border'} ${!opt.enabled && !isExp ? 'bg-theme-base/50 grayscale-[0.8] opacity-70 hover:grayscale-0 hover:opacity-100 hover:border-theme-primary/30' : 'bg-theme-base'} ${!opt.enabled ? 'border-gray-500/30' : ''}`;
+        
+        const dotColor = opt.enabled ? 'bg-emerald-400 shadow-[0_0_12px_#34d399]' : 'bg-gray-500/50 shadow-none';
+        
+        let toggleHtml = '';
+        if (idx > 0) {
+           toggleHtml = `
+            <div class="flex items-center gap-2" onclick="event.stopPropagation()">
+              <span class="text-xs sm:text-sm font-bold ${opt.enabled ? 'text-theme-primary' : 'text-theme-muted'} hidden sm:block">${opt.enabled ? 'مفعل' : 'معطل'}</span>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" class="sr-only peer" ${opt.enabled ? 'checked' : ''} onchange="toggleOptionEnabled(event, ${idx})">
+                <div class="w-11 h-6 bg-gray-500/30 border border-theme-border peer-focus:outline-none rounded-full peer peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-gray-400 peer-checked:after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-theme-primary"></div>
+              </label>
+            </div>
+           `;
+        }
+
+        const optLabel = escapeHTML(opt.label || `تذكرة نوع ${idx+1}`);
+        const optOpenMsg = escapeHTML(opt.openMessage || '');
+        const unescapedEmoji = (opt.emoji || '').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+
+        let emojiPreviewHtml = '';
+        let emojiInputBlock = '';
+        const customMatch = unescapedEmoji.match(/<?a?:?([^:]+):(\d+)>?/);
+
+        let initialAnimContent = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>`;
+        if (guildEmojisCache && guildEmojisCache.length > 0) {
+            const randomEmoji = guildEmojisCache[Math.floor(Math.random() * guildEmojisCache.length)];
+            const ext = randomEmoji.animated ? 'gif' : 'png';
+            const imgUrl = `https://cdn.discordapp.com/emojis/${randomEmoji.id}.${ext}?size=24`;
+            initialAnimContent = `<img src="${imgUrl}" class="w-6 h-6 object-contain" alt="emoji">`;
+        }
+
+        if (customMatch) {
+            const ext = unescapedEmoji.startsWith('<a:') ? 'gif' : 'png';
+            const imgUrl = `https://cdn.discordapp.com/emojis/${customMatch[2]}.${ext}?size=24`;
+            emojiPreviewHtml = `<img src="${imgUrl}" alt="${escapeHTML(customMatch[1])}" class="w-6 h-6 inline-block rounded-sm object-contain">`;
+            
+            emojiInputBlock = `
+              <div class="flex items-center gap-3 w-full bg-theme-input border-2 border-theme-primary/40 rounded-xl px-4 py-3 shadow-inner">
+                <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-theme-panel rounded-lg border border-theme-border shadow-sm">
+                  <img src="${imgUrl}" alt="${escapeHTML(customMatch[1])}" class="w-7 h-7 object-contain">
+                </div>
+                <span class="font-bold text-theme-text text-lg flex-1 truncate" dir="ltr">:${escapeHTML(customMatch[1])}:</span>
+                <div class="flex items-center gap-2" onclick="event.stopPropagation()">
+                  <button onclick="requestServerEmojis(${idx})" type="button" class="p-2.5 bg-theme-primary/10 hover:bg-theme-primary text-theme-primary hover:text-white border border-theme-primary/30 rounded-lg transition-all shadow-[0_0_15px_rgba(192,38,211,0.4)] hover:animate-none flex items-center justify-center w-10 h-10" title="تغيير الإيموجي">
+                    <span class="emoji-anim-container transition-transform duration-500">${initialAnimContent}</span>
+                  </button>
+                  <button onclick="updateOpt(${idx}, 'emoji', '')" type="button" class="p-2.5 bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white rounded-lg transition-all border border-red-500/30" title="إزالة الإيموجي">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                  </button>
+                </div>
+              </div>
+            `;
+        } else {
+            emojiPreviewHtml = escapeHTML(unescapedEmoji);
+            emojiInputBlock = `
+              <div class="relative w-full flex items-center" onclick="event.stopPropagation()">
+                <input type="text" value="${escapeHTML(unescapedEmoji)}" onchange="updateOpt(${idx}, 'emoji', this.value)" class="w-full bg-theme-input border-2 border-theme-border hover:border-theme-primary/50 focus:border-theme-primary rounded-xl pl-16 pr-5 py-4 outline-none text-base font-black text-theme-text transition-colors shadow-inner" placeholder="مثال 🎫 أو ⚠️ (أو اترك فارغاً)">
+                <button onclick="requestServerEmojis(${idx})" type="button" class="absolute left-2 p-2 bg-theme-panel hover:bg-theme-primary text-theme-primary hover:text-white border border-theme-border rounded-lg transition-all shadow-[0_0_15px_rgba(192,38,211,0.4)] hover:animate-none flex items-center justify-center w-[38px] h-[38px]" title="استعراض ايموجيات السيرفر">
+                  <span class="emoji-anim-container transition-transform duration-500">${initialAnimContent}</span>
+                </button>
+              </div>
+            `;
+        }
+
+        outerDiv.innerHTML = `
+          <div class="flex items-center justify-between p-4 sm:p-7 transition-colors hover:bg-theme-panel hover:bg-opacity-80 group/row cursor-pointer" onclick="toggleExpandOption(${idx})">
+            <div class="flex items-center gap-3 sm:gap-5 min-w-0 pr-2">
+              <div class="w-2.5 h-2.5 sm:w-4 sm:h-4 rounded-full ${dotColor} transition-colors flex-shrink-0"></div>
+              <span class="font-black text-base sm:text-xl text-theme-text truncate" dir="auto">${optLabel}</span>
+              ${emojiPreviewHtml ? `<span class="bg-theme-input border border-theme-border rounded-lg px-2 py-1 text-sm sm:text-lg leading-none shadow-sm flex-shrink-0 flex items-center justify-center min-w-[2.5rem] min-h-[2.5rem]">${emojiPreviewHtml}</span>` : ''}
+            </div>
+            <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+               ${toggleHtml}
+               <button class="bg-theme-panel p-2 sm:p-2.5 rounded-xl border border-theme-border text-theme-muted transition-all duration-300 hover:bg-theme-primary/20 hover:border-theme-primary/60 hover:text-theme-primary ${isExp ? 'rotate-90 bg-theme-primary/10 border-theme-primary/50 text-theme-primary shadow-[0_0_15px_rgba(192,38,211,0.3)]' : 'shadow-sm group-hover/row:border-theme-primary/30'} cursor-pointer focus:outline-none focus:ring-2 focus:ring-theme-primary pointer-events-none" title="إعدادات الخيار">
+                 <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+               </button>
+            </div>
+          </div>
+          
+          <div class="${isExp ? 'block' : 'hidden'} p-5 sm:p-9 border-t-2 border-theme-border bg-theme-panel/40 flex flex-col gap-6 sm:gap-8 shadow-inner">
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+               <div class="flex flex-col gap-3">
+                 <label class="text-sm text-theme-muted font-bold uppercase tracking-wider flex items-center gap-2"><svg class="w-4 h-4 text-theme-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg> اسم الزر / التذكرة</label>
+                 <input type="text" value="${optLabel}" onchange="updateOpt(${idx}, 'label', this.value)" class="w-full bg-theme-input border-2 border-theme-border hover:border-theme-primary/50 focus:border-theme-primary rounded-xl px-5 py-4 outline-none text-base font-black text-theme-text transition-colors shadow-inner">
+               </div>
+               <div class="flex flex-col gap-3">
+                 <label class="text-sm text-theme-muted font-bold uppercase tracking-wider flex items-center gap-2"><svg class="w-4 h-4 text-theme-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> الأيموجي المرفق (Emoji)</label>
+                 ${emojiInputBlock}
+               </div>
+               <div class="md:col-span-2 flex flex-col gap-3">
+                 <label class="text-sm text-theme-muted font-bold uppercase tracking-wider flex items-center gap-2"><svg class="w-4 h-4 text-theme-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg> الرسالة الداخلية (عند فتح التكت)</label>
+                 <textarea onchange="updateOpt(${idx}, 'openMessage', this.value)" rows="3" class="w-full bg-theme-input border-2 border-theme-border hover:border-theme-primary/50 focus:border-theme-primary rounded-xl px-5 py-4 outline-none text-base font-bold text-theme-text transition-colors resize-y min-h-[100px] shadow-inner leading-relaxed" placeholder="نص الرسالة التي يرسلها البوت عند فتح هذا النوع...">${optOpenMsg}</textarea>
+               </div>
+               <div class="md:col-span-2 flex flex-col gap-3">
+                 <label class="text-sm text-theme-muted font-bold uppercase tracking-wider flex items-center gap-2"><svg class="w-4 h-4 text-theme-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg> رابط صورة الزر (اختياري)</label>
+                 <div class="flex gap-2 relative">
+                   <input type="text" value="${escapeHTML(opt.buttonImage || opt.image || '')}" onchange="updateOpt(${idx}, 'buttonImage', this.value)" class="w-full bg-theme-input border-2 border-theme-border hover:border-theme-primary/50 focus:border-theme-primary rounded-xl px-5 py-4 outline-none text-base font-bold text-theme-text transition-colors shadow-inner" placeholder="https://...">
+                   <input type="file" id="btnImageFile_${idx}" accept="image/*" class="hidden" onchange="uploadButtonImage(event, ${idx})">
+                   <button onclick="document.getElementById('btnImageFile_${idx}').click()" class="bg-theme-base border-2 border-theme-border hover:border-theme-primary/50 text-theme-muted hover:text-theme-text px-4 py-4 rounded-xl transition-all flex items-center justify-center shrink-0">
+                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                   </button>
+                 </div>
+               </div>
+             </div>
+             
+             <div class="flex flex-col gap-3 mt-6 border-t border-theme-border/50 pt-6">
+               <label class="text-sm text-theme-muted font-bold uppercase tracking-wider flex items-center gap-2"><svg class="w-4 h-4 text-theme-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg> رتب الدعم المخصصة للزر (اختياري)</label>
+               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[180px] overflow-y-auto pr-2">
+                 ${window.allRoles ? window.allRoles.map(r => {
+                   const isChecked = (opt.supportRoles || []).includes(r.id);
+                   const colorStr = r.color ? `#${r.color.toString(16).padStart(6, '0')}` : 'currentColor';
+                   return `<label class="relative flex items-center gap-3 p-2.5 rounded-xl border cursor-pointer transition-all shadow-sm bg-theme-input border-theme-border hover:border-theme-primary/50 has-[:checked]:bg-theme-primary/10 has-[:checked]:border-theme-primary group/role">
+                     <input type="checkbox" class="peer sr-only" ${isChecked ? 'checked' : ''} onchange="updateOptRole(${idx}, '${escapeHTML(r.id)}', this.checked)">
+                     <div class="relative flex items-center justify-center w-5 h-5 rounded border-2 border-theme-border bg-theme-base flex-shrink-0 transition-colors peer-checked:bg-theme-primary peer-checked:border-theme-primary text-transparent peer-checked:text-white">
+                       <svg class="w-3.5 h-3.5 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                     </div>
+                     <div class="w-3 h-3 rounded-full shadow-sm flex-shrink-0" style="background-color: ${escapeHTML(colorStr)}"></div>
+                     <span class="text-sm font-bold truncate flex-1 text-theme-muted peer-checked:text-theme-text transition-colors">${escapeHTML(r.name)}</span>
+                   </label>`;
+                 }).join('') : '<span class="text-sm text-theme-muted font-bold block pt-2">لم يتم تحميل الرتب الموجودة في سيرفرك</span>'}
+               </div>
+             </div>
+          </div>`;
+        container.appendChild(outerDiv);
+      });
+    }
+
+    function toggleExpandOption(idx) { 
+      expandedOptionIndex = expandedOptionIndex === idx ? null : idx; 
+      renderOptions(); 
+    }
+    
+    let currentEmojiOptionIndex = null;
+    let guildEmojisCache = null;
+
+    function openEmojiModal(idx) {
+      currentEmojiOptionIndex = idx;
+      const modal = document.getElementById('emojiModal');
+      const content = document.getElementById('emojiModalContent');
+      
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      // small delay for transition
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        content.classList.remove('scale-95');
+        content.classList.add('scale-100');
+      }, 10);
+
+      loadServerEmojis();
+    }
+
+    function closeEmojiModal() {
+      const modal = document.getElementById('emojiModal');
+      const content = document.getElementById('emojiModalContent');
+      
+      modal.classList.add('opacity-0');
+      content.classList.remove('scale-100');
+      content.classList.add('scale-95');
+      
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }, 300);
+    }
+
+    async function loadServerEmojis() {
+      const grid = document.getElementById('emojiGrid');
+      const empty = document.getElementById('emojiEmpty');
+      const loading = document.getElementById('emojiLoading');
+
+      if (guildEmojisCache !== null) {
+         if (guildEmojisCache.length > 0) {
+           renderEmojiGrid(guildEmojisCache);
+           empty.classList.add('hidden');
+         } else {
+           grid.innerHTML = '';
+           empty.classList.remove('hidden');
+         }
+         return;
+      }
+
+      grid.innerHTML = '';
+      empty.classList.add('hidden');
+      loading.classList.remove('hidden');
+      loading.classList.add('flex');
+
+      try {
+        const res = await fetch(`${WORKER_URL}/guild/${currentGuildId}/emojis`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const data = await res.json();
+        
+        loading.classList.add('hidden');
+        loading.classList.remove('flex');
+        
+        if (Array.isArray(data)) {
+           guildEmojisCache = data;
+        } else if (data && Array.isArray(data.emojis)) {
+           guildEmojisCache = data.emojis;
+        } else {
+           guildEmojisCache = [];
+        }
+        
+        if(guildEmojisCache.length > 0) {
+           renderEmojiGrid(guildEmojisCache);
+        } else {
+           empty.classList.remove('hidden');
+        }
+      } catch (err) {
+        loading.classList.add('hidden');
+        loading.classList.remove('flex');
+        empty.classList.remove('hidden');
+        empty.innerText = 'حدث خطأ أثناء جلب الإيموجيات.';
+      }
+    }
+
+    function renderEmojiGrid(emojis) {
+      const grid = document.getElementById('emojiGrid');
+      grid.innerHTML = '';
+      emojis.forEach(emoji => {
+        const ext = emoji.animated ? 'gif' : 'png';
+        const url = `https://cdn.discordapp.com/emojis/${emoji.id}.${ext}?size=48`;
+        const format = emoji.animated ? `<a:${emoji.name}:${emoji.id}>` : `<:${emoji.name}:${emoji.id}>`;
+        
+        const btn = document.createElement('button');
+        btn.className = 'flex flex-col items-center justify-center p-2 rounded-xl bg-theme-input border border-theme-border hover:border-theme-primary/50 hover:bg-theme-panel hover:shadow-[0_0_10px_rgba(192,38,211,0.3)] transition-all transform hover:-translate-y-1';
+        btn.title = emoji.name;
+        btn.onclick = () => selectServerEmoji(format);
+        
+        btn.innerHTML = `<img src="${url}" alt="${escapeHTML(emoji.name)}" class="w-8 h-8 object-contain pointer-events-none">`;
+        grid.appendChild(btn);
+      });
+    }
+
+    function selectServerEmoji(format) {
+       if (currentEmojiOptionIndex !== null) {
+          updateOpt(currentEmojiOptionIndex, 'emoji', format);
+          renderOptions();
+       }
+       closeEmojiModal();
+    }
+
+    function requestServerEmojis(idx) {
+      openEmojiModal(idx);
+    }
+
+    // Emoji animation loop
+    setInterval(() => {
+      const containers = document.querySelectorAll('.emoji-anim-container');
+      if (containers.length === 0) return;
+      
+      if (guildEmojisCache && guildEmojisCache.length > 0) {
+        containers.forEach(container => {
+           const randomEmoji = guildEmojisCache[Math.floor(Math.random() * guildEmojisCache.length)];
+           const ext = randomEmoji.animated ? 'gif' : 'png';
+           const imgUrl = `https://cdn.discordapp.com/emojis/${randomEmoji.id}.${ext}?size=24`;
+           
+           container.classList.add('scale-50', 'opacity-0');
+           setTimeout(() => {
+             container.innerHTML = `<img src="${imgUrl}" class="w-6 h-6 object-contain" alt="emoji">`;
+             container.classList.remove('scale-50', 'opacity-0');
+           }, 250);
+        });
+      }
+    }, 1000);
+
+    function toggleProfileDropdown(e) {
+      e.stopPropagation();
+      const dropdown = document.getElementById('profileDropdownMenu');
+      if (dropdown) {
+        dropdown.classList.toggle('opacity-0');
+        dropdown.classList.toggle('invisible');
+        dropdown.classList.toggle('scale-95');
+        dropdown.classList.toggle('scale-100');
+      }
+    }
+    document.addEventListener('click', () => {
+      const dropdown = document.getElementById('profileDropdownMenu');
+      if (dropdown && !dropdown.classList.contains('invisible')) {
+        dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+        dropdown.classList.remove('scale-100');
+      }
+    });
+
+    function toggleOptionEnabled(e, idx) {
+      e.stopPropagation();
+      ticketOptions[idx].enabled = !ticketOptions[idx].enabled;
+      showToast(ticketOptions[idx].enabled ? `تم تفعيل خيار "${ticketOptions[idx].label}"` : `تم تعطيل خيار "${ticketOptions[idx].label}"`, ticketOptions[idx].enabled ? 'green' : 'grey');
+      renderOptions();
+    }
+    
+    function updateOpt(idx, key, value) { 
+      ticketOptions[idx][key] = value; 
+    }
+    
+    function updateOptRole(optIdx, roleId, isChecked) {
+      if (!ticketOptions[optIdx].supportRoles) ticketOptions[optIdx].supportRoles = [];
+      if (isChecked) {
+        if (!ticketOptions[optIdx].supportRoles.includes(roleId)) ticketOptions[optIdx].supportRoles.push(roleId);
+      } else {
+        ticketOptions[optIdx].supportRoles = ticketOptions[optIdx].supportRoles.filter(r => r !== roleId);
+      }
+    }
+
+    async function saveSettings() { await savePayload(); }
+    async function saveOptions() { await savePayload(); }
+    
+    async function savePayload() {
+      if (isSavingReq) return;
+      if(!userHasAdmin) return showToast('لا يمكنك التعديل على السيرفر و انت عضو', 'error');
+      
+      const panelTitle = document.getElementById('panelTitleInput').value.trim();
+      const panelDesc = document.getElementById('panelDescInput').value.trim();
+      
+      if (panelTitle.length > 256) return showToast('العنوان طويل جداً (أقصى حد 256 حرف)', 'error');
+      if (panelDesc.length > 2000) return showToast('الوصف طويل جداً (أقصى حد 2000 حرف)', 'error');
+
+      for (let i = 0; i < ticketOptions.length; i++) {
+        if (ticketOptions[i].enabled) {
+          if (!ticketOptions[i].label || ticketOptions[i].label.length < 1 || ticketOptions[i].label.length > 80) {
+            return showToast(`خيار "${ticketOptions[i].label || 'بدون اسم'}" يحتاج إلى اسم صحيح!`, 'error');
+          }
+          if (ticketOptions[i].openMessage && ticketOptions[i].openMessage.length > 1000) {
+            return showToast(`الرسالة الترحيبية في الخيار "${ticketOptions[i].label}" طويلة جداً!`, 'error');
+          }
+        }
+      }
+
+      isSavingReq = true;
+      const catId = document.getElementById('catSelect').value;
+      const logId = document.getElementById('logSelect').value;
+      const ratingId = document.getElementById('ratingSelect').value;
+      
+      const panelChannelId = document.getElementById('panelChannelSelect').value;
+      
+      try {
+        const fullSettingsObj = {
+           ticketOptions: ticketOptions,
+           buttonOptions: ticketOptions,
+           buttonsMode: panelMode === 'buttons',
+           selectEnabled: panelMode === 'select',
+           panelMode: panelMode,
+           logChannelId: logId || null,
+           logEnabled: document.getElementById('logToggle') ? document.getElementById('logToggle').checked : !!logId,
+           ratingChannelId: ratingId || null,
+           ratingEnabled: document.getElementById('ratingToggle') ? document.getElementById('ratingToggle').checked : !!ratingId,
+           autoRatingEnabled: document.getElementById('autoRatingToggle') ? document.getElementById('autoRatingToggle').checked : false,
+           reasonEnabled: document.getElementById('reasonToggle') ? document.getElementById('reasonToggle').checked : false,
+           categoryId: catId || null,
+           panelTitle: panelTitle,
+           panelDesc: panelDesc,
+           panelImage: document.getElementById('panelImageInput') ? document.getElementById('panelImageInput').value.trim() : null,
+           panelChannelId: panelChannelId || null
+        };
+        const payload = { 
+          category_id: catId || null, 
+          log_channel_id: logId || null, 
+          support_roles: selectedRoles, 
+          full_settings: JSON.stringify(fullSettingsObj) 
+        };
+        
+        const res = await fetch(`${WORKER_URL}/guild/${currentGuildId}/ticket-settings`, {
+          method: 'POST', 
+          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        
+        if (res.ok) {
+          showToast('تم حفظ التغييرات بنجاح! جرب فتح بانل جديد في السيرفر', 'green');
+        } else { 
+           showToast('فشل في حفظ البيانات على الخادم', 'red'); 
+        }
+      } catch (e) { 
+        showToast('حدث خطأ في الاتصال بالخادم', 'red'); 
+      } finally {
+        isSavingReq = false;
+      }
+    }
+
+    async function uploadPanelImage(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const formData = new FormData();
+      formData.append('image', file);
+
+      showToast('جاري رفع الصورة...', 'warning');
+
+      try {
+        const res = await fetch(`${WORKER_URL}/guild/${currentGuildId}/upload-image`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}` },
+          body: formData
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          if (data.url) {
+            document.getElementById('panelImageInput').value = data.url;
+            showToast('تم رفع الصورة بنجاح!', 'green');
+          } else {
+            showToast('فشل في رفع الصورة', 'error');
+          }
+        } else {
+          showToast('حدث خطأ أثناء رفع الصورة', 'error');
+        }
+      } catch (e) {
+        showToast('خطأ في الاتصال بالخادم', 'error');
+      }
+
+      event.target.value = '';
+    }
+
+    async function uploadButtonImage(event, idx) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const formData = new FormData();
+      formData.append('image', file);
+
+      showToast('جاري رفع صورة الزر...', 'warning');
+
+      try {
+        const res = await fetch(`${WORKER_URL}/guild/${currentGuildId}/upload-image`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}` },
+          body: formData
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          if (data.url) {
+            updateOpt(idx, 'buttonImage', data.url);
+            renderOptions();
+            showToast('تم رفع صورة الزر بنجاح!', 'green');
+          } else {
+            showToast('فشل في رفع الصورة', 'error');
+          }
+        } else {
+          showToast('حدث خطأ أثناء رفع الصورة', 'error');
+        }
+      } catch (e) {
+        showToast('خطأ في الاتصال بالخادم', 'error');
+      }
+
+      event.target.value = '';
+    }
+
+    async function sendPanel() {
+      if (isSendingReq) return;
+      if(!userHasAdmin) return showToast('لا يمكنك إرسال البانل و أنت عضو', 'error');
+      const channelId = document.getElementById('panelChannelSelect').value;
+      if(!channelId) return showToast('يرجى تحديد القناة المستهدفة', 'error');
+      
+      const title = document.getElementById('panelTitleInput').value.trim() || 'تذاكر الدعم الفني';
+      const desc = document.getElementById('panelDescInput').value.trim() || 'لفتح تذكرة الرجاء الضغط على الخيار المناسب من الأزرار بالأسفل.';
+      
+      if (title.length > 256) return showToast('العنوان طويل جداً (أقصى حد 256 حرف)', 'error');
+      if (desc.length > 2000) return showToast('الوصف طويل جداً (أقصى حد 2000 حرف)', 'error');
+
+      isSendingReq = true;
+      try {
+        const payload = {
+          channel_id: channelId,
+          title: title,
+          description: desc,
+          image: document.getElementById('panelImageInput') ? document.getElementById('panelImageInput').value.trim() : null,
+          mode: panelMode,
+          options: ticketOptions.filter(o => o.enabled)
+        };
+        
+        const res = await fetch(`${WORKER_URL}/guild/${currentGuildId}/send-panel`, {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        
+        if(res.ok) {
+          showToast('تم إرسال اللوحة بنجاح!', 'green');
+        } else {
+          showToast('فشل في إرسال اللوحة، يرجى التأكد من صلاحيات البوت', 'error');
+        }
+      } catch (err) {
+        showToast('حدث خطأ في الاتصال بالخادم', 'error');
+      } finally {
+        isSendingReq = false;
+      }
+    }
+
+    window.onload = init;
+  </script>
+</body>
+</html>
